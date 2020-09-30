@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import NaviBar from './components/NaviBar';
+import EventsPage from './components/EventsPage';
+import ArtistForm from './components/ArtistForm';
+import EventForm from './components/EventForm';
+import FavoritesPage from './components/FavoritesPage';
+import LoginPage from './components/LoginPage';
+import SignInPage from './components/SignInPage';
+import UserProfilePage from './components/UserProfilePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NaviBar />
+      <Switch>
+        <Route exact path={"/"}>
+          <EventsPage />
+        </Route>
+        <Route exact path={"/addartist"}>
+          <ArtistForm />
+        </Route>
+        <Route exact path={"/addevent"}>
+          <EventForm />
+        </Route>
+        <Route exact path={"/favorites"}>
+          <FavoritesPage />
+        </Route>
+        <Route exact path={"/login"}>
+          <LoginPage />
+        </Route>
+        <Route exact path={"/signin"}>
+          <SignInPage />
+        </Route>
+        <Route exact path={"/userprofile"}>
+          <UserProfilePage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
