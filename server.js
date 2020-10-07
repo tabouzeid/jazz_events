@@ -14,7 +14,7 @@ app.use(express.static("client/build"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/eventkeeper", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 // Define API routes here
-
+require("./routes/api-routes")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
