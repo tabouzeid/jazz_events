@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -8,18 +9,19 @@ var session    = require('express-session');
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+app.use(express.static("client/build"));
 
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/eventkeeper", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
+// Define API routes here
+require("./routes/api-routes")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
