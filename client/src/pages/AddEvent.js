@@ -14,8 +14,8 @@ function AddEvent() {
         eventName: "",
         cover: "",
         sets: [
-            { startTime: "" },
-            { artistList: "" }
+            { startTime: "" ,
+              artistList: "" }
         ]
     });
 
