@@ -29,7 +29,7 @@ export default function EventForm(props) {
                                 <input className="col-12 form-control"
                                     value={props.musicevent.venuename}
                                     type="text"
-                                    name="venuename"
+                                    name="venueName"
                                     placeholder="Venue Name"
                                     onChange={props.handleInputChange}
                                     //onChange={props.addVenuename}

@@ -8,7 +8,7 @@ import API from "../utils/API";
 function AddEvent() {
     const [mevents, setEvents] = useState({
         date: "",
-        venuename: "",
+        venueName: "",
         address: "",
         startTime: "" ,
         eventName: "",
