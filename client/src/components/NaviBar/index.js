@@ -22,7 +22,16 @@ export default function NaviBar() {
                         <li className="nav-item">
                             <a className="nav-link" href="/signin">Signup</a>
                         </li>
-                    </ul>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/favorites">Favorites</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/addevent">Add Event</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/userprofile">User Profile</a>
+                        </li>
+                </ul>
                 <FadeIn>
                     <nav className="navbar" style={mystyle}>
                         <img src={Logo} alt="bones_logo" className="my-2 ml-3" ></img>
@@ -30,9 +39,6 @@ export default function NaviBar() {
                     </nav>
                 </FadeIn >
             </div>
+        )
 
-    )
-}
-
-
-
+    }
