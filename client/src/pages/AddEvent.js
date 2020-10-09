@@ -4,39 +4,67 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import API from "../utils/API";
+import { CalendarPlusFill, CalendarMinusFill,PlusCircleFill } from "react-bootstrap-icons";
+import "./style.css"
 
 function AddEvent() {
+
     const [mevents, setEvents] = useState({
         date: "",
         venueName: "",
         address: "",
-        startTime: "" ,
+        startTime: "",
         eventName: "",
-        cover: "",
-        sets: [
-            { startTime: "" ,
-              artistList: "" }
-        ]
+        cover: ""
     });
 
+    // State Variable to store an Array of each object that has {time, Artist}
+    const [performances, setPerformances] = useState(
+        [
+            { startTime: "", artistList: "" }
+        ]
+    );
 
     const handleInputChange = e => {
-        e.preventDefault();
-        console.log("Inside handleInputchange, e.target", e.target);
         const { name, value } = e.target
         setEvents({ ...mevents, [name]: value })
-        console.log("Enter Handle Input Change funciton after setEvents, venue name is", mevents);
+    }
 
-        // Before i call this individual function addVenuename, and code below works for a single 
-        //setEvents({...mevents, venuename: e.target.value});
-        //console.log("Enter add venue name funciton, venue name is", mevents.venuename);
+    const handlePerformanceChange = (index, event) => {
+        console.log(index, event.target.name);
+        console.log(index, event.target.value);
+        const values = [...performances];
+        values[index][event.target.name] = event.target.value;
+        console.log("Array values is: ", values);
+        setPerformances(values);
+        console.log("Array performances ", performances);
+    }
+
+    const handleAddFields = () => {
+        setPerformances([...performances, { startTime: "", artistList: "" }])
+    }
+
+    const handleRemoveFields = (index) => {
+        const values = [...performances];
+        values.splice(index, 1);
+        setPerformances(values);
     }
 
     const handleFormSubmit = (e) => {
-        //console.log ("When Submit form: venuename is:", {venuename});
-        console.log("When Submit form: venuename is:", mevents);
-        API.saveEvent(mevents);
+        e.preventDefault();
+        console.log("Array performances in Form SUbmit ", performances);
+        let data = {
+            date: mevents.date,
+            venueName: mevents.venueName,
+            address: mevents.address,
+            startTime: mevents.startTime,
+            eventName: mevents.eventName,
+            cover: mevents.cover,
+            sets: performances
+        }
 
+        console.log("When Submit form: DATA is:", data);
+        API.saveEvent(data);
     }
 
     return (
@@ -45,9 +73,48 @@ function AddEvent() {
                 <Row>
                     <Col size="12">
                         <EventForm
-                            //musicevent={mevents.venuename} addVenuename={addVenuename} handleFormSubmit={handleFormSubmit}
-                            musicevent={mevents} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit}
+                            musicevent={mevents}
+                            handleInputChange={handleInputChange}
+                            handleFormSubmit={handleFormSubmit}
                         />
+                    </Col>
+                    <Col size="12">
+                        <div>
+                            <h2> Times and Performerss </h2>
+                        </div>
+
+                        <Row>
+                            <form>
+                                {performances.map((performance, index) => (
+                                    <div key={index}>
+                                        <input
+                                            className="Btn"
+                                            type="text"
+                                            name="startTime"
+                                            label="Show Start Time"
+                                            value={performance.startTime}
+                                            onChange={event => handlePerformanceChange(index, event)} />
+
+                                        <input
+                                            className="Btn"
+                                            type="text"
+                                            name="artistList"
+                                            label="Show Performer"
+                                            value={performance.artistList}
+                                            onChange={event => handlePerformanceChange(index, event)} />
+
+                                        <CalendarPlusFill
+                                            size={40}
+                                            onClick={() => handleAddFields()} />
+       
+                                        <CalendarMinusFill
+                                            size={40}
+                                            onClick={() => handleRemoveFields()} />
+                                    </div>
+                                ))}
+
+                            </form>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
