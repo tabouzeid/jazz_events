@@ -4,7 +4,7 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import API from "../utils/API";
-import { CalendarPlusFill, CalendarMinusFill,PlusCircleFill } from "react-bootstrap-icons";
+import { CalendarPlusFill, CalendarMinusFill, PlusCircleFill } from "react-bootstrap-icons";
 import "./style.css"
 
 function AddEvent() {
@@ -13,7 +13,6 @@ function AddEvent() {
         date: "",
         venueName: "",
         address: "",
-        startTime: "",
         eventName: "",
         cover: ""
     });
@@ -31,11 +30,8 @@ function AddEvent() {
     }
 
     const handlePerformanceChange = (index, event) => {
-        console.log(index, event.target.name);
-        console.log(index, event.target.value);
         const values = [...performances];
         values[index][event.target.name] = event.target.value;
-        console.log("Array values is: ", values);
         setPerformances(values);
         console.log("Array performances ", performances);
     }
@@ -80,7 +76,7 @@ function AddEvent() {
                     </Col>
                     <Col size="12">
                         <div>
-                            <h2> Times and Performerss </h2>
+                            <h2> Show Time and Performers </h2>
                         </div>
 
                         <Row>
@@ -89,11 +85,12 @@ function AddEvent() {
                                     <div key={index}>
                                         <input
                                             className="Btn"
-                                            type="text"
+                                            type="time"
                                             name="startTime"
                                             label="Show Start Time"
                                             value={performance.startTime}
                                             onChange={event => handlePerformanceChange(index, event)} />
+
 
                                         <input
                                             className="Btn"
@@ -106,7 +103,7 @@ function AddEvent() {
                                         <CalendarPlusFill
                                             size={40}
                                             onClick={() => handleAddFields()} />
-       
+
                                         <CalendarMinusFill
                                             size={40}
                                             onClick={() => handleRemoveFields()} />

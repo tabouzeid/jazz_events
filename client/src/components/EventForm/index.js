@@ -4,7 +4,7 @@ import Row from "../Row";
 import Col from "../Col";
 
 export default function EventForm(props) {
-    console.log("event form, props is", props)
+    console.log("event form, props is", props.musicevent)
     return (
         <Container fluid>
             <Container>
@@ -32,7 +32,6 @@ export default function EventForm(props) {
                                     name="venueName"
                                     placeholder="Venue Name"
                                     onChange={props.handleInputChange}
-                                    //onChange={props.addVenuename}
                                 />
                             </div>
 
@@ -44,18 +43,6 @@ export default function EventForm(props) {
                                     type="text"
                                     name="address"
                                     placeholder="Address"
-                                    onChange={props.handleInputChange}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label className="EventForm"><h3> startTime </h3></label>
-                                <br></br>
-                                <input className="col-12 form-control"
-                                    value={props.musicevent.startTime}
-                                    type="time"
-                                    name="startTime"
-                                    placeholder="Start Time"
                                     onChange={props.handleInputChange}
                                 />
                             </div>
@@ -84,17 +71,6 @@ export default function EventForm(props) {
                                 />
                             </div>
 
-                            <div className="form-group">
-                                <label className="EventForm"><h3> Set Start Time </h3></label>
-                                <br></br>
-                                <input className="col-12 form-control"
-                                    value={props.musicevent.sets[0].startTime}
-                                    type="time"
-                                    name="sets[0].startTime"
-                                    placeholder="setStart Time"
-                                    onChange={props.handleInputChange}
-                                />
-                            </div>
                             <button type="submit" className="submitBtn btn btn-primary" onClick={props.handleFormSubmit}>
                                 Submit 
                              </button>

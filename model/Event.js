@@ -17,11 +17,6 @@ const EventSchema = new Schema({
         trim: true,
         required: true,
     },
-    startTime: {
-        // type: Date,
-        type: String,
-        required: true,
-    },
     eventName: {
         type: String,
         trim: true,
@@ -37,9 +32,9 @@ const EventSchema = new Schema({
                 required: false,
             },
             artistList: {
-                type: [String],
+                type: String,
                 required: false,
-            } // min of 1 non empty (required)
+            } // min of 1 non empty (required )
         }
     ]
 }
