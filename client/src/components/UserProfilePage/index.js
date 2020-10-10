@@ -8,6 +8,9 @@ import React from 'react';
 //     setErrorMsg("Current password is incorrect.")
 // }
 
+
+//get user info by id
+
 //if newUsername == props.username, error "That already IS your username"
 //if newUsername already exists in database && is !== props.username, error "That username is already taken."
 //if after debounce (currentPass.current.value !== props.password), set span to "Current password is incorrect."
@@ -19,6 +22,7 @@ import React from 'react';
 const updateSettings = (event) => {
     //event.target.username.value will give you whats inside the field named "username"(line 41(right now))
 }
+
 export default function UserProfilePage() {
 
     return (
