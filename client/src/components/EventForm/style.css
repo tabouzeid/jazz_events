@@ -1,0 +1,11 @@
+/* Inventory Button */
+.Btn {
+    letter-spacing: 3px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    border: 5px;
+    border-style: double;
+    padding: 5px 20px 5px 20px;
+    /* float: right; */
+}

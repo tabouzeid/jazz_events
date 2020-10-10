@@ -9,6 +9,8 @@ import FavoritesPage from './components/FavoritesPage';
 import LoginPage from './components/LoginPage';
 import SignInPage from './components/SignInPage';
 import UserProfilePage from './components/UserProfilePage';
+import AddEvent from './pages/AddEvent';
+
 function App() {
   return (
     <Router>
@@ -21,7 +23,7 @@ function App() {
           <ArtistForm />
         </Route>
         <Route exact path={"/addevent"}>
-          <EventForm />
+          <AddEvent />
         </Route>
         <Route exact path={"/favorites"}>
           <FavoritesPage />

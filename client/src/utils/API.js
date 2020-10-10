@@ -15,5 +15,11 @@ export default {
     // button on the UserProfilePage at the moment
   deleteUser: function(userName) {
     return axios.delete("/api/user/" + userName);
-  }
+  },
+
+  // Saves an Event to the database
+  saveEvent: function (savedEvent) {
+    console.log("In API.js saveEvent");
+    return axios.post("/api/event", savedEvent);
+}
 };

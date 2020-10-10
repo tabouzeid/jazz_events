@@ -21,7 +21,8 @@ module.exports = function(app) {
 
     // Create a new event
     app.post('/api/event', (req, res) => {
-        Event.create(req, res);
+        console.log("api-routes.js, api.post");
+        Event.create(req, res)
     });
     
     // Update an existing event with the id specified in the 'id' param
