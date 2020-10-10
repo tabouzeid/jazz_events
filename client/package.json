@@ -2,11 +2,7 @@
   "name": "jazz_events_client",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
   "proxy": "http://localhost:3001",
-=======
-  "proxy": "http://localhost:3000/",
->>>>>>> origin/master
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
