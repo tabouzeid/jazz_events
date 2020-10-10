@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5f361e03.chunk.css",
+    "main.js": "/static/js/main.c227243b.chunk.js",
+    "main.js.map": "/static/js/main.c227243b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f4822002.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f4822002.js.map",
+    "static/js/2.fd743e50.chunk.js": "/static/js/2.fd743e50.chunk.js",
+    "static/js/2.fd743e50.chunk.js.map": "/static/js/2.fd743e50.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.41f070cb99b0a4b220a7ca5b89ec869d.js": "/precache-manifest.41f070cb99b0a4b220a7ca5b89ec869d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.fd743e50.chunk.js.LICENSE.txt": "/static/js/2.fd743e50.chunk.js.LICENSE.txt",
+    "static/media/bones_final_large.png": "/static/media/bones_final_large.564a1162.png",
+    "static/media/brick_wall_copy.jpg": "/static/media/brick_wall_copy.93f174de.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4822002.js",
+    "static/js/2.fd743e50.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.c227243b.chunk.js"
+  ]
+}
