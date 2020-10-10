@@ -106,7 +106,7 @@ function AddEvent() {
 
                                         <CalendarMinusFill
                                             size={40}
-                                            onClick={() => handleRemoveFields()} />
+                                            onClick={() => handleRemoveFields(index)} />
                                     </div>
                                 ))}
 
