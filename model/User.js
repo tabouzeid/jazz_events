@@ -14,7 +14,7 @@ const UserSchema = new Schema({
       required: true
     }
 });
-// const User = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
 // User.prototype.validPassword = function(password) {
 //   return bcrypt.compareSync(password, this.password);
 // };
