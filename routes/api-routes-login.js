@@ -4,9 +4,7 @@ const axios = require("axios");
 const { transcode } = require("buffer");
 var path = require("path");
 const passport = require("../config/passport");
-const bcrypt = require("bcryptjs");
-// var User = require('../model/User')
-const User = require('../controller/userController');
+const userController = require("../controller/userController");
 const PRODUCTION = process.env.PRODUCTION;
 require("dotenv").config();
 
@@ -20,40 +18,7 @@ module.exports = function (app) {
   // });
 
   app.post("/api/signup", function (req, res) {
-    User.findOne({email: req.body.email}, async (err, doc) => {
-      if (err) throw err;
-      if (doc) res.send("User Already Exists");
-      if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const newUser = new User({
-          username: req.body.username,
-          email: req.body.email,
-          password: hashedPassword,
-        });
-        await newUser.create({
-          username: req.body.username,
-          email: req.body.email,
-          password: req.body.password
-        })
-        .then(() => {
-          res.send("User Created");
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      }
-    })
-    // User.create({
-    //     username: req.body.username,
-    //     email: req.body.email,
-    //     password: req.body.password
-    //   })
-    //     .then(() => {
-    //       res.sendFile(path.join(__dirname, "../public/questionnaire.html"));
-    //     })
-    //     .catch(err => {
-    //       res.status(401).json(err);
-    //     });
+    userController.signup(req, res);
   });
 
   // app.get("/api/users", function(req, res) {

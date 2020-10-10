@@ -5,18 +5,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 var passport   = require('./config/passport');
 var session    = require('express-session');
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// middleware from YT
-app.use(cors({
-  origin: "http://localhost:3001",
-  credentials: true
-}))
 
 // Serve up static assets (usually on heroku)
 app.use(express.static("client/build"));

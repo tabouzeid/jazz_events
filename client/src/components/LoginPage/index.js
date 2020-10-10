@@ -57,20 +57,6 @@ export default function LoginPage() {
                 <tbody>
                     <tr>
                         <td>
-<<<<<<< HEAD
-                            <label>Username:</label>
-                        </td>
-                        <td>
-                            <input 
-                                type="text" 
-                                name="username" 
-                                placeholder="Enter username here." 
-                                value={userInputValue}
-                                onChange={event => {
-                            setUsername(event.target.value);
-                            setUserInputValue(event.target.value);
-                            }}/>
-=======
                             <label>Email:</label>
                         </td>
                         <td>
@@ -80,7 +66,6 @@ export default function LoginPage() {
                                 placeholder="your@email.com"
                                 value={email}
                                 onChange={event => setEmail(event.target.value)} />
->>>>>>> origin/master
                         </td>
                     </tr>
                     <tr>
@@ -88,47 +73,23 @@ export default function LoginPage() {
                             <label>Password:</label>
                         </td>
                         <td>
-<<<<<<< HEAD
-                            <input 
-                                type="password" 
-                                name="password" 
-                                placeholder="Enter password here." 
-                                value={passInputValue}
-                                onChange={event => {
-                            setPassword(event.target.value);
-                            setPassInputValue(event.target.value);
-                            }}/>     
-=======
                             <input
                                 type="password"
                                 name="password"
                                 placeholder="Enter password here."
                                 value={password}
                                 onChange={event => setPassword(event.target.value)} />
->>>>>>> origin/master
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div>
-<<<<<<< HEAD
-                <button 
-                    type="submit" 
-                    onClick={handleSubmit}
-=======
                 <button
                     type="submit"
->>>>>>> origin/master
                 >
                     Submit
                 </button>
             </div>
-<<<<<<< HEAD
-        </form> 
-    )
- }
-=======
         </form>
     )
 }
->>>>>>> origin/master
