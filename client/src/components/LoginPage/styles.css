@@ -1,0 +1,19 @@
+form {
+    margin-top: 20px;
+}
+td {
+    padding-left: 10px;
+}
+label {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+input {
+    margin-left: 10px;
+}
+button {
+    margin-top: 10px!important;
+    margin-left: 20px!important;
+    border-radius: 5px!important;
+}
