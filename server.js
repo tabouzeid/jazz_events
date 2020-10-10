@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-var passport   = require('./config/passport');
-var session    = require('express-session');
+const passport   = require('./config/passport');
+const session    = require('express-session');
 const cookieParser = require("cookie-parser");
 
 // Define middleware here
