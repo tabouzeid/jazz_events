@@ -9,7 +9,6 @@ import FavoritesPage from './components/FavoritesPage';
 import LoginPage from './components/LoginPage';
 import SignInPage from './components/SignInPage';
 import UserProfilePage from './components/UserProfilePage';
-import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <Router>
