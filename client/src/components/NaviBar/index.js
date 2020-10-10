@@ -2,7 +2,6 @@ import React from 'react';
 import Logo from "../../assets/bones_final_large.png";
 import BrickWall from "../../assets/brick_wall_copy.jpg";
 import FadeIn from 'react-fade-in';
-
 const mystyle = {
     color: "white",
     backgroundImage: `url(${BrickWall})`,

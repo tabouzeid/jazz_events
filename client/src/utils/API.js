@@ -8,7 +8,7 @@ export default {
   },
   // Saves a new user to the database
   saveUser: function(userInfo) {
-    return axios.post("/api/user", userInfo);
+    return axios.post("/api/signup", userInfo);
   },
     // Deletes the user with the given username
     // Not sure if this is needed, since there is no delete
