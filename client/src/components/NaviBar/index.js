@@ -7,7 +7,9 @@ const mystyle = {
     backgroundImage: `url(${BrickWall})`,
     boxShadow: "5px 10px 8px rgb(50, 50, 50, 0.2)"
 };
+
 export default function NaviBar() {
+
     return (<div>
                 <ul className="nav justify-content-end" id="navItems">
                         <li className="nav-item">
@@ -37,5 +39,5 @@ export default function NaviBar() {
                 </FadeIn >
             </div>
         )
-    }
 
+    }

@@ -1,53 +1,63 @@
 import React, { useState } from "react";
 import "./styles.css"
 import API from "../../utils/API";
+
 export default function LoginPage() {
-    //set states for current user's username and password
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-    // Set states for input fields so they can be cleared onSubmit
-        //...there may be a better way to do this
-        const [userInputValue, setUserInputValue] = useState();
-        const [passInputValue, setPassInputValue] = useState();
-    const handleSubmit = event => {
+    //set states for current user's email and password
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-            console.log("The username = ", username, " and the password = ", password);
+        console.log("The email = ", email, " and the password = ", password);
+
         // Validate form entries    
         validateSubmit();
-        }   
+
+        event.target.reset();
+    }
+
+    // Validate user email
+    const validateEmail = (email) => {
+        const re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+        return re.test(email);
+    }
+
     // Validate all form entries before querying the DB
     const validateSubmit = () => {
-        console.log("Validating username: ", username, " password: ", password);
-        if (username === "" || username === undefined || username.length < 2) {
-        return alert("We don't recognize your username. Please enter a valid username");
+        console.log("Validating email: ", email, " password: ", password);
+
+        if (email === "" || email === undefined || validateEmail(email) === false) {
+            return alert("Please enter a valid email.")
         } else if (password === "" || password === undefined || password.length < 8) {
-        return alert("Oops. Your password doesn't match. Please try again.")
+            return alert("Oops. Your password doesn't match. Please try again.")
         } else {
-            console.log("Validation passed. Querying DB for username: ", username, " password: ", password);
+            console.log("Validation passed. Querying DB for email: ", email, " password: ", password);
             // If all conditions pass...
             // Query Mongo DB for the user's info using & passport(?)...
             API.getUser({
-                username: username,
+                email: email,
                 password: password
             })
-            .then(() => {
-                console.log("The username = ", username, " and the password = ", password, " were queried");
-            })
-            .catch(error => {
-                console.log("There was an error: ", error);
-                alert("I'm sorry, we have encountered an error with your Login submission.");
-            })
-            // Clear input field values after post attempt
-            setUserInputValue("");
-            setPassInputValue("");
+                .then(() => {
+                    console.log("The email = ", email, " and the password = ", password, " were queried");
+                })
+                .catch(error => {
+                    console.log("There was an error: ", error);
+                    alert("I'm sorry, we have encountered an error with your Login submission.");
+                })
+
         }
     }
+
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <table>
                 <tbody>
                     <tr>
                         <td>
+<<<<<<< HEAD
                             <label>Username:</label>
                         </td>
                         <td>
@@ -60,6 +70,17 @@ export default function LoginPage() {
                             setUsername(event.target.value);
                             setUserInputValue(event.target.value);
                             }}/>
+=======
+                            <label>Email:</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="email"
+                                placeholder="your@email.com"
+                                value={email}
+                                onChange={event => setEmail(event.target.value)} />
+>>>>>>> origin/master
                         </td>
                     </tr>
                     <tr>
@@ -67,6 +88,7 @@ export default function LoginPage() {
                             <label>Password:</label>
                         </td>
                         <td>
+<<<<<<< HEAD
                             <input 
                                 type="password" 
                                 name="password" 
@@ -76,18 +98,37 @@ export default function LoginPage() {
                             setPassword(event.target.value);
                             setPassInputValue(event.target.value);
                             }}/>     
+=======
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Enter password here."
+                                value={password}
+                                onChange={event => setPassword(event.target.value)} />
+>>>>>>> origin/master
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div>
+<<<<<<< HEAD
                 <button 
                     type="submit" 
                     onClick={handleSubmit}
+=======
+                <button
+                    type="submit"
+>>>>>>> origin/master
                 >
                     Submit
                 </button>
             </div>
+<<<<<<< HEAD
         </form> 
     )
  }
+=======
+        </form>
+    )
+}
+>>>>>>> origin/master

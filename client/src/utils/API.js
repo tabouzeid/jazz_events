@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export default {
 // Find user for authentication - username must be a unique value
   getUser: function(userData) {
