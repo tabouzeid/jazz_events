@@ -20,18 +20,26 @@ module.exports = function(app) {
     });
 
     // Create a new event
+    // permission for admin
     app.post('/api/event', (req, res) => {
         console.log("api-routes.js, api.post");
         Event.create(req, res)
     });
     
+    // permission for admin
     // Update an existing event with the id specified in the 'id' param
     app.put('/api/event/:id', (req, res) => {
         Event.update(req, res);
     });
 
+    // permission for admin
     // Delete an existing event with the id specified in the 'id' param
     app.delete('/api/event/:id', (req, res) => {
         Event.remove(req, res);
     });
+    
+    // add and remove favorits user permission
+
+
+
 };

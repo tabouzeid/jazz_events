@@ -36,10 +36,6 @@ passport.use(
   )
 );
 
-//change to mongoDB, remove sequelize!!!
-// In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the user
-// Just consider this part boilerplate needed to make it all work
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });

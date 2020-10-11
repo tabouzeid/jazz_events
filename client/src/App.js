@@ -7,7 +7,7 @@ import ArtistForm from './components/ArtistForm';
 import EventForm from './components/EventForm';
 import FavoritesPage from './components/FavoritesPage';
 import LoginPage from './components/LoginPage';
-import SignInPage from './components/SignInPage';
+import SignUpPage from './components/SignUpPage';
 import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
 
@@ -19,6 +19,7 @@ function App() {
         <Route exact path={"/"}>
           <EventsPage />
         </Route>
+        {/* maybe will be removed from routes */}
         <Route exact path={"/addartist"}>
           <ArtistForm />
         </Route>
@@ -31,8 +32,8 @@ function App() {
         <Route exact path={"/login"}>
           <LoginPage />
         </Route>
-        <Route exact path={"/signin"}>
-          <SignInPage />
+        <Route exact path={"/signup"}>
+          <SignUpPage />
         </Route>
         <Route exact path={"/userprofile"}>
           <UserProfilePage />

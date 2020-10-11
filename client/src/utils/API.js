@@ -1,21 +1,29 @@
 import axios from "axios";
 
 export default {
-// Find user for authentication - username must be a unique value
-  getUser: function(userData) {
-    console.log("The query URL = /api/user/" + userData.username);
-    return axios.get("/api/user/" + userData.username);
+  LogIn: (email, password) => {
+    return axios.post('/api/login', {
+      email: email,
+      password: password
+    })
   },
-  // Saves a new user to the database
+  isLoggedIn: () => {
+    return axios.get('/auth/success')
+  },
+  getUser: function(userData) {
+    console.log("The query URL = /api/user/" + userData.userId);
+    return axios.get("/api/user/" + userData.userId);
+  },
   saveUser: function(userInfo) {
     return axios.post("/api/signup", userInfo);
   },
-    // Deletes the user with the given username
-    // Not sure if this is needed, since there is no delete
-    // button on the UserProfilePage at the moment
-  deleteUser: function(userName) {
-    return axios.delete("/api/user/" + userName);
+  updateUser: function(userId) {
+    return axios.put("/api/user/" + userId);
   },
+  deleteUser: function(userId) {
+    return axios.delete("/api/user/" + userId);
+  },
+  Logout: () => axios.get('/logout'),
 
   // Saves an Event to the database
   saveEvent: function (savedEvent) {
