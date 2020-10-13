@@ -116,14 +116,14 @@ function AddEvent() {
                     <Col size="12">
                         <br></br>
                         <Row>
-                        <div>
-                            <button type="submit" className="submitBtn btn btn-primary" onClick={handleFormSubmit}>
-                                Submit
+                            <div>
+                                <button type="submit" className="submitBtn btn btn-primary" onClick={handleFormSubmit}>
+                                    Submit
                              </button>
-                        </div>
+                            </div>
                         </Row>
                     </Col>
-                    
+
                 </Row>
                 <br></br>
             </Container>

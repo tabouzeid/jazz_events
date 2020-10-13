@@ -9,7 +9,7 @@ export default function FavoritesPage() {
 
     let favorites = [];
     let results = [];
-    
+
     return (
         <div className="container">
             <div className="row">
