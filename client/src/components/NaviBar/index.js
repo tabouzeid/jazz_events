@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from "../../assets/bones_higer_res.png";
 import BrickWall from "../../assets/brick_wall_copy.jpg";
 import FadeIn from 'react-fade-in';
+
 const bgStyle = {
     color: "white",
     backgroundImage: `url(${BrickWall})`,
@@ -13,7 +14,6 @@ const style = {
     boxShadow: "1px 1px 8px 2px rgb(255, 255, 255)",
 
 };
-
 const logoStyle = {
     position: `absolute`,
     top: `16px`,

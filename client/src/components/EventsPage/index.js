@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Calendar from "../Calendar"
 import Event from "../Event"
 import axios from "axios"
-// import API from "../../utils/API"
 
 export default function EventsPage() {
     const mystyle = {
@@ -17,10 +16,6 @@ export default function EventsPage() {
             setEvent(eventsList.data)
         })
     }, [])
-
-    // API.getEvent().then(function (obj) {
-    //     setEvent(obj.data);
-    // })
 
     return (
         <div className="mx-auto d-flex flex-column" style={mystyle}>

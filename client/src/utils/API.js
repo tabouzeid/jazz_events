@@ -6,7 +6,6 @@ export default {
     console.log("The query URL = /api/user/" + userData.username);
     return axios.get("/api/user/" + userData.username);
   },
-
   // Saves a new user to the database
   saveUser: function (userInfo) {
     return axios.post("/api/signup", userInfo);
