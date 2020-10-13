@@ -35,7 +35,7 @@ export default function LoginPage() {
             console.log("Validation passed. Querying DB for email: ", email, " password: ", password);
             // If all conditions pass...
             // Query Mongo DB for the user's info using & passport(?)...
-            API.getUser({
+            API.login({
                 email: email,
                 password: password
             })

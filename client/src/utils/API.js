@@ -3,8 +3,12 @@ import axios from "axios";
 export default {
   // Find user for authentication - username must be a unique value
   getUser: function (userData) {
-    console.log("The query URL = /api/user/" + userData.username);
-    return axios.get("/api/user/" + userData.username);
+    console.log("The query URL = /api/user/" + userData.email);
+    return axios.get("/api/user/" + userData.email);
+  },
+  login: function (userData) {
+    console.log("The query URL = /api/user/" + userData.email);
+    return axios.post("/api/login", userData);
   },
   // Saves a new user to the database
   saveUser: function (userInfo) {
