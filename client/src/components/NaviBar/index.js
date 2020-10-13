@@ -1,43 +1,50 @@
 import React from 'react';
-import Logo from "../../assets/bones_final_large.png";
+import Logo from "../../assets/bones_higer_res.png";
 import BrickWall from "../../assets/brick_wall_copy.jpg";
 import FadeIn from 'react-fade-in';
-const mystyle = {
+
+const bgStyle = {
     color: "white",
     backgroundImage: `url(${BrickWall})`,
-    boxShadow: "5px 10px 8px rgb(50, 50, 50, 0.2)"
+    boxShadow: "3px 3px 8px rgb(50, 50, 50, 0.4)",
+    height: `12rem`,
 };
+const style = {
+    backgroundColor: `rgba(255, 255, 255, 0.7)`,
+    boxShadow: "1px 1px 8px 2px rgb(255, 255, 255)",
 
+};
+const logoStyle = {
+    position: `absolute`,
+    top: `16px`,
+    left: `45px`
+}
 export default function NaviBar() {
+    return (<FadeIn>
+        <div style={bgStyle}>
+            <ul style={style} className="nav justify-content-end pt-2" id="navItems">
+                <li className="nav-item">
+                    <a className="nav-link text-body" href="/" >Home</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-body" href="/login">Login</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-body" href="/signin">Signup</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-body" href="/favorites">Favorites</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-body" href="/addevent">Add Event</a>
+                </li>
+                <li className="nav-item mr-5">
+                    <a className="nav-link text-body" href="/userprofile">User Profile</a>
+                </li>
+            </ul>
+            <img src={Logo} alt="bones_logo" style={logoStyle} />
+        </div>
+    </FadeIn >
+    )
 
-    return (<div>
-                <ul className="nav justify-content-end" id="navItems">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/login">Login</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/signin">Signup</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/favorites">Favorites</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/addevent">Add Event</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/userprofile">User Profile</a>
-                        </li>
-                </ul>
-                <FadeIn>
-                    <nav className="navbar" style={mystyle}>
-                        <img src={Logo} alt="bones_logo" className="my-2 ml-3" ></img>
-                        <span className="navbar-brand mx-auto">Welcome</span>
-                    </nav>
-                </FadeIn >
-            </div>
-        )
-
-    }
+}

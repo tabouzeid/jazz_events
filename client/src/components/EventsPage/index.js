@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Calendar from "../Calendar"
+import Event from "../Event"
+import axios from "axios"
 
-export default class EventsPage extends React.Component {
-    render() {
-        const mystyle = {
-            color: "#1f60a7",
-            backgroundColor: `#faf3f0`,
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            paddingTop: "5rem"
+export default function EventsPage() {
+    const mystyle = {
+        paddingTop: "5rem"
+    };
 
-        };
+    const [events, setEvent] = useState([])
 
-        return (
-            <div style={mystyle}>
+    useEffect(() => {
+        axios.get("/api/event").then((eventsList) => {
+            console.log(eventsList.data)
+            setEvent(eventsList.data)
+        })
+    }, [])
 
-                <h1>TEST</h1>
-
-            </div>
-        );
-    }
+    return (
+        <div className="mx-auto d-flex flex-column" style={mystyle}>
+            <Calendar />
+            {events.map((event, index) =>
+                <Event
+                    key={event._id}
+                    id={index}
+                    date={event.date}
+                    venueName={event.venueName}
+                    address={event.address}
+                    startTime={event.startTime}
+                    eventName={event.eventName}
+                    cover={event.cover}
+                    sets={event.sets} />)}
+        </div>
+    );
 }

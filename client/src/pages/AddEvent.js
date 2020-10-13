@@ -4,7 +4,7 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import API from "../utils/API";
-import { CalendarPlusFill, CalendarMinusFill, PlusCircleFill } from "react-bootstrap-icons";
+import { CalendarPlusFill, CalendarMinusFill } from "react-bootstrap-icons";
 import "./style.css"
 
 function AddEvent() {
@@ -116,14 +116,14 @@ function AddEvent() {
                     <Col size="12">
                         <br></br>
                         <Row>
-                        <div>
-                            <button type="submit" className="submitBtn btn btn-primary" onClick={handleFormSubmit}>
-                                Submit
+                            <div>
+                                <button type="submit" className="submitBtn btn btn-primary" onClick={handleFormSubmit}>
+                                    Submit
                              </button>
-                        </div>
+                            </div>
                         </Row>
                     </Col>
-                    
+
                 </Row>
                 <br></br>
             </Container>
