@@ -55,7 +55,7 @@ export default function SignInPage() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label>Name:</label>
+                <label><h3>Name:</h3></label>
                 <input
                     className="form-control"
                     type="text"
@@ -66,7 +66,7 @@ export default function SignInPage() {
                     />
             </div>
             <div className="form-group">
-                <label>Email:</label>
+                <label><h3>Email:</h3></label>
                 <input 
                     className="form-control"
                     type="email"
@@ -78,7 +78,7 @@ export default function SignInPage() {
                 <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
-                <label>Password:</label>
+                <label><h3>Password:</h3></label>
                 <input 
                     className="form-control"
                     type="password"
