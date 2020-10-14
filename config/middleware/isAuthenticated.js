@@ -1,11 +1,24 @@
-// This is middleware for restricting routes a user is not allowed to visit if not logged in
-module.exports = function(req, res, next) {
-    // If the user is logged in, continue with the request to the restricted route
-    if (req.user) {
-      return next();
+const ROLES = require('./roles')
+  
+/** Access middleware to ensure user is allowed to access certain routes */
+const AccessMiddleware = {
+  hasAccess: (req, res, next) => {
+    if (!req.isAuthenticated()) {
+      req.session.redirectTo = req.originalUrl
+      return res.status(401).json({ success: false, error: 'unauthorized' })
     }
-  
-    // If the user isn't logged in, redirect them to the login page
-    return res.redirect("/");
-  };
-  
+
+    next()
+  },
+
+  hasAdminAccess: (req, res, next) => {
+    if (!req.isAuthenticated() || req.user.role !== ROLES.ADMIN) {
+      req.session.redirectTo = req.originalUrl
+      return res.status(401).json({ success: false, error: 'unauthorized' })
+    }
+
+    next()
+  },
+}
+
+module.exports = AccessMiddleware;

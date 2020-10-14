@@ -3,17 +3,16 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const LocalStrategy = require("passport-local").Strategy;
 
-//change to mongoDB, remove sequelize!!!
-// In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the user
-// Just consider this part boilerplate needed to make it all work
 passport.serializeUser((user, done) => {
+  console.log("serializeUser",user);
   done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
-  User.findOne({ email : id })
+  console.log("deserializeUser", id);
+  User.findById(id)
   .then((response) => {
+    console.log("deserializeUser", id);
     done(null, response);
   })
   .catch((err) => done(err, null));
@@ -49,8 +48,6 @@ passport.use(
     }
   )
 );
-
-
 
 // Exporting our configured passport
 module.exports = passport;

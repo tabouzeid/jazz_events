@@ -4,7 +4,6 @@ import './App.css';
 import NaviBar from './components/NaviBar';
 import EventsPage from './components/EventsPage';
 import ArtistForm from './components/ArtistForm';
-import EventForm from './components/EventForm';
 import FavoritesPage from './components/FavoritesPage';
 import LoginPage from './components/LoginPage';
 import SignInPage from './components/SignInPage';

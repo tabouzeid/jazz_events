@@ -1,6 +1,4 @@
-// const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -12,10 +10,15 @@ const UserSchema = new Schema({
     password: {
       type: String,
       required: true
-    }
+    },
+    name: {
+      type: String,
+      required: false,
+    },
+    role: {
+      type: String,
+      default: 'user'
+    },
 });
 const User = mongoose.model("User", UserSchema);
-// User.prototype.validPassword = function(password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
 module.exports = User;
