@@ -50,46 +50,31 @@ export default function LoginPage() {
         }
     }
 
-
     return (
         <form onSubmit={handleSubmit}>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <label>Email:</label>
-                        </td>
-                        <td>
-                            <input
-                                type="text"
-                                name="email"
-                                placeholder="your@email.com"
-                                value={email}
-                                onChange={event => setEmail(event.target.value)} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Password:</label>
-                        </td>
-                        <td>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Enter password here."
-                                value={password}
-                                onChange={event => setPassword(event.target.value)} />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-                <button
-                    type="submit"
-                >
-                    Submit
-                </button>
+            <div className="form-group">
+                <label><h3>Email:</h3></label>
+                <input 
+                    className="col-12 form-control"
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                    />
             </div>
-        </form>
+            <div className="form-group">
+                <label><h3>Password:</h3></label>
+                <input 
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    placeholder="Enter password here. Minimum of 8 characters."
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
+                />
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+        </form> 
     )
 }
