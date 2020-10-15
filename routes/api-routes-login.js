@@ -46,32 +46,11 @@ module.exports = function (app) {
     // create endpoint for user for update user with array of favorites
   app.post("/api/usersaddfavorites/:id", AccessMiddleware.hasAccess, function (req, res) {
     userController.update(req,res);
-    //   {
-    //   where: {
-    //     id: req.params.id
-    //   }
-    // }).then(function(data) {
-    //   var hbsObject = {
-    //     favorites: data
-    //   };
-    //   console.log(hbsObject);
-    //   res.json({ success: true, message: 'Your event was saved to favorites' });
-
-    // }).catch(err => {
-    //   console.log(err);
-    // });
   });
 
-  // app.get("/api/user_data", (req, res) => {
-  //   if (!req.user) {
-  //     res.json({});
-  //   } else {
-  //     res.json({
-  //       email: req.user.email,
-  //       id: req.user.id
-  //     });
-  //   }
-  // });
+  app.delete("/api/user/:id", (req, res) => {
+    userController.remove(req, res);
+  });
 
   app.get("/logout", function (req, res) {
     req.logout();
