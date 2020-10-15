@@ -27,6 +27,25 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  update: function(req, res) {
+    User
+      .findOneAndUpdate({ _id: req.user._id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateFavorites: function(req, res) {
+    User
+      .findOneAndUpdate(  { _id: req.user._id}, { $set: { 'favorites' : req.body }})
+      .then(data => {
+        var hbsObject = {
+          favorites: data
+        };
+        // res.json(dbModel);
+        console.log(hbsObject);
+        res.json({ success: true, message: 'Your event was saved to favorites' });
+      })
+      .catch(err => res.status(422).json(err));
+  },
   signup: function (req, res) {
     // console.log("hello", req);
     User

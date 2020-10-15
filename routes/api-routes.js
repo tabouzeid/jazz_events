@@ -1,6 +1,7 @@
 // Routes
 // =============================================================
 const Event = require('../controller/eventController');
+const AccessMiddleware = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
     // Retrieves all events with a date field of today or later
@@ -20,18 +21,22 @@ module.exports = function(app) {
     });
 
     // Create a new event
-    app.post('/api/event', (req, res) => {
+    // admin check for this route
+    app.post('/api/event', AccessMiddleware.hasAdminAccess, (req, res) => {
         console.log("api-routes.js, api.post");
         Event.create(req, res)
     });
     
     // Update an existing event with the id specified in the 'id' param
-    app.put('/api/event/:id', (req, res) => {
+    // admin check for this route
+    app.put('/api/event/:id', AccessMiddleware.hasAdminAccess, (req, res) => {
         Event.update(req, res);
     });
 
     // Delete an existing event with the id specified in the 'id' param
-    app.delete('/api/event/:id', (req, res) => {
+    // admin check for this route
+    app.delete('/api/event/:id', AccessMiddleware.hasAdminAccess, (req, res) => {
         Event.remove(req, res);
     });
+
 };
