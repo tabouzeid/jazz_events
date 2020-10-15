@@ -38,11 +38,5 @@ module.exports = function(app) {
     app.delete('/api/event/:id', AccessMiddleware.hasAdminAccess, (req, res) => {
         Event.remove(req, res);
     });
-    // create endpoint for favorites for user
-    app.post('/api/favorites/event', AccessMiddleware.hasAccess, (req, res) => {
-        Event.create(req, res);
-    });
-    app.get('/api/favorites', AccessMiddleware.hasAccess, (req, res) => {
-        Event.findAllWhere(req, res);
-    });
+
 };
