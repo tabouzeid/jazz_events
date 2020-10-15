@@ -44,11 +44,12 @@ module.exports = function (app) {
     userController.findById(req, res);
   });
     // create endpoint for user for update user with array of favorites
-  app.post("/api/usersaddfavorites/:id", AccessMiddleware.hasAccess, function (req, res) {
-    userController.update(req,res);
+  app.put("/api/favorites", AccessMiddleware.hasAccess, function (req, res) {
+    userController.updateFavorites(req,res);
   });
 
-  app.delete("/api/user/:id", (req, res) => {
+  app.delete("/api/user/:id", AccessMiddleware.hasAccess, (req, res) => {
+    req.logout();
     userController.remove(req, res);
   });
 

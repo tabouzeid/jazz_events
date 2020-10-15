@@ -16,7 +16,7 @@ module.exports = function(app) {
     });
 
     // Retrieves all events with a date field of 'startdate' or later
-    app.get('/api/event/:startdate', AccessMiddleware.hasAdminAccess, (req, res) => {
+    app.get('/api/event/:startdate', (req, res) => {
         Event.findAllWhere(req, res, {date: {$gte: Date.parse(req.params.startdate)}});
     });
 
