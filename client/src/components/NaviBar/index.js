@@ -7,7 +7,7 @@ const bgStyle = {
     color: "white",
     backgroundImage: `url(${BrickWall})`,
     boxShadow: "3px 3px 8px rgb(50, 50, 50, 0.4)",
-    height: `12rem`,
+    height: `8rem`,
 };
 const style = {
     backgroundColor: `rgba(255, 255, 255, 0.7)`,
@@ -17,7 +17,8 @@ const style = {
 const logoStyle = {
     position: `absolute`,
     top: `16px`,
-    left: `45px`
+    left: `45px`,
+    zIndex: "6"
 }
 export default function NaviBar() {
     return (<FadeIn>

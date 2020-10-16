@@ -1,23 +1,34 @@
 import React from "react";
 
 function Event(props) {
+
+    // <div class="card">
+    //     <h5 class="card-header">Featured</h5>
+    //     <div class="card-body">
+    //         <h5 class="card-title">Special title treatment</h5>
+    //         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    //         <a href="#" class="btn btn-primary">Go somewhere</a>
+    //     </div>
+    // </div>
+
+    /////////////
+
+
     return (
-        <div className="mx-auto">
-            <h1>Events goes here</h1>
-            <div className="row">
-                <div className="col"><h2>{props.date}: {props.eventName} at {props.venueName}</h2>
-                    <h3>{props.startTime} / {props.address} / {props.cover}</h3></div>
-            </div>
-            <div className="row">
-                <div className="col"><ul>{props.sets.map(set => (
-                    <li>
-                        <h1>{set.startTime}</h1>
-                        <h3>{set.artists}</h3>
-                    </li>
+        <div className="card border-light mx-auto mt-3">
+            <div >{props.date}: {props.eventName} at {props.venueName}</div>
+            <div className="card-body">
+                <h3 className="card-title">{props.startTime} / {props.address} / {props.cover}</h3>
+                <div>{props.sets.map(set => (
+                    <div>
+                        <p>{set.startTime}</p>
+                        <p>{set.artists}</p>
+                    </div>
                 ))}
-                </ul></div>
+                </div>
             </div>
         </div>
+
     )
 }
 
