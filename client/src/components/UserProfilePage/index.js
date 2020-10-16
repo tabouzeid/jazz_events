@@ -30,73 +30,74 @@ const updateSettings = (event) => {
 export default function UserProfilePage() {
     const [user, setUser] = useState({});
 
-    useEffect (() => {
-        axios.get("/api/user").then(
-            (res) => {setUser(res.data)}
-        )
+    useEffect(() => {
+        axios.get("/api/user").then((res) => { setUser(res.data) })
     }, [user]);
 
     return (
-        <div>
-            <form onSubmit={updateSettings}>
-            <h1>User Settings</h1>
-                <div className="form-group">
-                    <h3 className="heading">Change Email</h3>
-                    <b>Current email: </b> taher@taher.com <br/>
-                    <label for="newEmail">New email:</label>
-                    <input 
-                        type="email" 
-                        className="form-control" 
-                        id="newEmail" 
-                        name="email"
-                        placeholder="user@email.com"
-                        />
+        <div className="container">
+            <div className="row">
+                <div className="col">
+
+                    <form onSubmit={updateSettings}>
+                        <h1>User Settings</h1>
+                        <div className="form-group">
+                            <h3 className="heading">Change Email</h3>
+                            <label>New email:</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="newEmail"
+                                name="email"
+                                placeholder={user.email}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <h3 className="heading">Change Username</h3>
+                            <label>New username:</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="newUsername"
+                                name="username"
+                                placeholder={user.name}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <h3 className="heading">Change Password</h3>
+                            <label>Current password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="currentPassword"
+                                name="currentPassword"
+                                placeholder="Enter current password"
+                                minLength="8"
+                            />
+                            <span id="currentPasswordTest" ></span>
+                            <label>New password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="newPassword"
+                                name="newPassword"
+                                placeholder="Enter new password"
+                                minLength="8"
+                            />
+                            <label>Reenter new password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="reenterNewPassword"
+                                name="reenterNewPassword"
+                                placeholder="Reenter new password"
+                                minLength="8"
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <h3 className="heading">Change Username</h3>
-                    <b>Current username: </b> taher <br/>
-                    <label for="newUsername">New username:</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="newUsername" 
-                        name="username"
-                        placeholder="Enter new username"
-                        />
-                </div>
-                <div className="form-group">
-                    <h3 className="heading">Change Password</h3>
-                    <label for="currentPassword">Current password:</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="currentPassword" 
-                        name="currentPassword"
-                        placeholder="Enter current password"
-                        minlength="8"
-                        />
-                    <span id="currentPasswordTest" ></span>
-                    <label for="newPassword">New password:</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="newPassword" 
-                        name="newPassword"
-                        placeholder="Enter new password"
-                        minlength="8"
-                        />
-                    <label for="reenterNewPassword">Reenter new password:</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="reenterNewPassword" 
-                        name="reenterNewPassword"
-                        placeholder="Reenter new password"
-                        minlength="8"
-                        />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            </div>
         </div>
     );
 

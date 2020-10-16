@@ -41,15 +41,23 @@ module.exports = function(app) {
         Event.remove(req, res);
     });
 
+    // endpoint of all favorites of user (result is array of objects of favorite events)
+    app.get('/api/favorites', AccessMiddleware.hasAccess, (req, res) => {
+        userController.getFavorites(req, res);
+    });
+        // create endpoint for user for update user with array of favorites
+    app.put("/api/favorites", AccessMiddleware.hasAccess, function (req, res) {
+        userController.updateFavorites(req,res);
+    });
+
     app.get('/api/user/', AccessMiddleware.hasAccess, (req, res) => {
         User.findById(req, res);
     });
 
     app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
-        console.log("put");
+        let updateFields = {};
         if (req.body.password){
             const passwordMatch = await bcrypt.compare(req.body.password, req.user.password)
-            console.log("passwordMatch", passwordMatch);
             if (passwordMatch){
                 User.update(req, res);
             } else {
