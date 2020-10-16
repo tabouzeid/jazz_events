@@ -41,7 +41,7 @@ module.exports = function (app) {
 
   // endpoint of all favorites of user (result is array of objects of favorite events)
   app.get('/api/favorites', AccessMiddleware.hasAccess, (req, res) => {
-    userController.findById(req, res);
+    userController.getFavorites(req, res);
   });
     // create endpoint for user for update user with array of favorites
   app.put("/api/favorites", AccessMiddleware.hasAccess, function (req, res) {

@@ -5,7 +5,7 @@ import NaviBar from './components/NaviBar';
 import EventsPage from './components/EventsPage';
 import ArtistForm from './components/ArtistForm';
 import FavoritesPage from './components/FavoritesPage';
-import LogInPage from './components/LogInPage';
+import LoginPage from './components/LoginPage';
 import SignInPage from './components/SignInPage';
 import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
@@ -28,7 +28,7 @@ function App() {
           <FavoritesPage />
         </Route>
         <Route exact path={"/login"}>
-          <LogInPage />
+          <LoginPage />
         </Route>
         <Route exact path={"/signin"}>
           <SignInPage />
