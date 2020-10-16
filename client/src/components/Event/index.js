@@ -16,6 +16,7 @@ function Event(props) {
 
     return (
         <div className="card border-light mx-auto mt-3">
+            <button className="saveUnsave" onclick={props.saveorunsave}>{props.buttonText}</button>
             <div >{props.date}: {props.eventName} at {props.venueName}</div>
             <div className="card-body">
                 <h3 className="card-title">{props.startTime} / {props.address} / {props.cover}</h3>

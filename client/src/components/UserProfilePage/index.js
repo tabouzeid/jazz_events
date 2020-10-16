@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 // const currentPassRef = useRef();
 // const errorMsgRef = useRef();
 // const [currentPass, setCurrentPass] = useState("");
@@ -20,10 +22,18 @@ import React from 'react';
 //userID will be passed in. Fetch user info from database using ID. Store user info in "state"
 
 const updateSettings = (event) => {
+
     //event.target.username.value will give you whats inside the field named "username"(line 41(right now))
 }
 
 export default function UserProfilePage() {
+    const [user, setUser] = useState({});
+
+    useEffect (() => {
+        axios.get("/api/user").then(
+            (res) => {setUser(res.data)}
+        )
+    }, [user]);
 
     return (
         <div>
@@ -31,14 +41,14 @@ export default function UserProfilePage() {
                 <h1>User Settings</h1>
 
                 <h3>Change email</h3>
-                    Current email: <b>taher@taher.com</b><br />
-                <label for="oldPass">New email:</label>
+                    Current email: <b>{user.email}</b><br />
+                <label for="email">New email:</label>
                 <input type="text" id="newEmail" name="email"
                     minlength="8" required /><br />
 
-                <h3>Change username</h3>
-                    Current username: <b>taher</b><br />
-                <label for="oldPass">New username:</label>
+                <h3>Change name</h3>
+                    Current name: <b>{user.name}</b><br />
+                <label for="username">New name:</label>
                 <input type="text" id="newUsername" name="username"
                     minlength="8" required /><br />
 
