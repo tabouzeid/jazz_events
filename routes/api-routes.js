@@ -45,17 +45,19 @@ module.exports = function(app) {
         User.findById(req, res);
     });
 
-    app.put('/api/user/', AccessMiddleware.hasAccess, (req, res) => {
+    app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
+        console.log("put");
         if (req.body.password){
-            if (req.body.password === bcrypt.hash(req.user.password, 10)){
+            const passwordMatch = await bcrypt.compare(req.body.password, req.user.password)
+            console.log("passwordMatch", passwordMatch);
+            if (passwordMatch){
                 User.update(req, res);
+            } else {
+                res.status(421).json({msg: "password doesn't match"})
             }
-            console.error("no match");
-            res.status(421).json(err);
         }
         //check if password is being provided in the request (i.e. they want to change password), then
         //check if current password matches user password (using bcrypt (in userController))
         //if it fails, break and respond 421 and flag "no match", else  User.update(req, res);
-       
     })
 };
