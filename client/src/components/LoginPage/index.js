@@ -51,30 +51,36 @@ export default function LoginPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label><h3>Email:</h3></label>
-                <input 
-                    className="col-12 form-control"
-                    type="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                    />
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label><h3>Email:</h3></label>
+                            <input
+                                className="col-12 form-control"
+                                type="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                value={email}
+                                onChange={event => setEmail(event.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label><h3>Password:</h3></label>
+                            <input
+                                className="form-control"
+                                type="password"
+                                name="password"
+                                placeholder="Enter password here. Minimum of 8 characters."
+                                value={password}
+                                onChange={event => setPassword(event.target.value)}
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
-            <div className="form-group">
-                <label><h3>Password:</h3></label>
-                <input 
-                    className="form-control"
-                    type="password"
-                    name="password"
-                    placeholder="Enter password here. Minimum of 8 characters."
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
-                />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form> 
+        </div>
     )
 }

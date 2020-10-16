@@ -27,7 +27,7 @@ export default function SignInPage() {
     const validateSubmit = () => {
         console.log("Validating email: ", email, " password: ", password);
 
-        if (name === "" || name === undefined || name.length < 2){
+        if (name === "" || name === undefined || name.length < 2) {
             return alert("Please enter a valid name.")
         } else if (email === "" || email === undefined || validateEmail(email) === false) {
             return alert("Please enter a valid email.")
@@ -53,42 +53,48 @@ export default function SignInPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label><h3>Name:</h3></label>
-                <input
-                    className="form-control"
-                    type="text"
-                    name="name"
-                    placeholder="Enter your name."
-                    value={name}
-                    onChange={event => setName(event.target.value)}
-                    />
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label><h3>Name:</h3></label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="name"
+                                placeholder="Enter your name."
+                                value={name}
+                                onChange={event => setName(event.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label><h3>Email:</h3></label>
+                            <input
+                                className="form-control"
+                                type="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                value={email}
+                                onChange={event => setEmail(event.target.value)}
+                            />
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div className="form-group">
+                            <label><h3>Password:</h3></label>
+                            <input
+                                className="form-control"
+                                type="password"
+                                name="password"
+                                placeholder="Enter password here. Minimum of 8 characters."
+                                value={password}
+                                onChange={event => setPassword(event.target.value)}
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
-            <div className="form-group">
-                <label><h3>Email:</h3></label>
-                <input 
-                    className="form-control"
-                    type="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                    />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div className="form-group">
-                <label><h3>Password:</h3></label>
-                <input 
-                    className="form-control"
-                    type="password"
-                    name="password"
-                    placeholder="Enter password here. Minimum of 8 characters."
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
-                />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form> 
+        </div>
     )
 }
