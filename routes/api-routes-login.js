@@ -11,13 +11,13 @@ module.exports = function (app) {
     if (!email || !password) {
       res.status(400).json({ success: false, msg: 'Invalid credentials' });
     }
-  
+
     // Authenticate the user using the credentials provided
     passport.authenticate('local', { session: true }, function (err, user) {
       if (err) {
-        res.status(400).json({ success: false, msg: 'Invalid credentials'});
+        res.status(400).json({ success: false, msg: 'Invalid credentials' });
       }
-  
+
       // When using passport with callback, we have to manually call req.login to set the Cookie
       req.login(user, async () => {
         res.json({ success: true, user })
@@ -33,42 +33,30 @@ module.exports = function (app) {
     console.log("authenticated-only");
     res.json({ success: true, message: 'You have auth access!' })
   })
-  
+
   app.get('/admin-only', AccessMiddleware.hasAdminAccess, (req, res) => {
     console.log("admin-only");
     res.json({ success: true, message: 'You have admin access!' })
   })
 
-  // app.get("/api/users/:id", function (req, res) {
-  //   db.User.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(data) {
-  //     var hbsObject = {
-  //       users: data
-  //     };
-  //     console.log(hbsObject);
-  //     res.render("index", hbsObject);
+  // endpoint of all favorites of user (result is array of objects of favorite events)
+  app.get('/api/favorites', AccessMiddleware.hasAccess, (req, res) => {
+    userController.getFavorites(req, res);
+  });
+    // create endpoint for user for update user with array of favorites
+  app.put("/api/favorites", AccessMiddleware.hasAccess, function (req, res) {
+    userController.updateFavorites(req,res);
+  });
 
-  //   }).catch(err => {
-  //     console.log(err);
-  //   });
-  // });
+  app.delete("/api/user/:id", AccessMiddleware.hasAccess, (req, res) => {
+    req.logout();
+    userController.remove(req, res);
+  });
 
-  // app.get("/api/user_data", (req, res) => {
-  //   if (!req.user) {
-  //     res.json({});
-  //   } else {
-  //     res.json({
-  //       email: req.user.email,
-  //       id: req.user.id
-  //     });
-  //   }
-  // });
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.end();
+  });
 
-  // app.get("/logout", function (req, res) {
-  //   req.logout();
-  //   res.redirect("/");
-  // });
+
 }

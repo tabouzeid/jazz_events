@@ -3,6 +3,7 @@ import React from "react";
 function Event(props) {
     return (
         <div className="mx-auto">
+            <button className="saveUnsave" onclick={props.saveorunsave}>{props.buttonText}</button>
             <h1>Events goes here</h1>
             <div className="row">
                 <div className="col"><h2>{props.date}: {props.eventName} at {props.venueName}</h2>

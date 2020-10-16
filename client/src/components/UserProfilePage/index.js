@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./styles.css";
+import axios from 'axios';
+
 // const currentPassRef = useRef();
 // const errorMsgRef = useRef();
 // const [currentPass, setCurrentPass] = useState("");
@@ -21,10 +23,18 @@ import "./styles.css";
 //userID will be passed in. Fetch user info from database using ID. Store user info in "state"
 
 const updateSettings = (event) => {
+
     //event.target.username.value will give you whats inside the field named "username"(line 41(right now))
 }
 
 export default function UserProfilePage() {
+    const [user, setUser] = useState({});
+
+    useEffect (() => {
+        axios.get("/api/user").then(
+            (res) => {setUser(res.data)}
+        )
+    }, [user]);
 
     return (
         <div>

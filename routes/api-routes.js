@@ -1,6 +1,9 @@
 // Routes
 // =============================================================
 const Event = require('../controller/eventController');
+const User = require('../controller/userController');
+const AccessMiddleware = require("../config/middleware/isAuthenticated");
+const bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
     // Retrieves all events with a date field of today or later
@@ -20,18 +23,41 @@ module.exports = function(app) {
     });
 
     // Create a new event
-    app.post('/api/event', (req, res) => {
+    // admin check for this route
+    app.post('/api/event', AccessMiddleware.hasAdminAccess, (req, res) => {
         console.log("api-routes.js, api.post");
         Event.create(req, res)
     });
     
     // Update an existing event with the id specified in the 'id' param
-    app.put('/api/event/:id', (req, res) => {
+    // admin check for this route
+    app.put('/api/event/:id', AccessMiddleware.hasAdminAccess, (req, res) => {
         Event.update(req, res);
     });
 
     // Delete an existing event with the id specified in the 'id' param
-    app.delete('/api/event/:id', (req, res) => {
+    // admin check for this route
+    app.delete('/api/event/:id', AccessMiddleware.hasAdminAccess, (req, res) => {
         Event.remove(req, res);
     });
+
+    app.get('/api/user/', AccessMiddleware.hasAccess, (req, res) => {
+        User.findById(req, res);
+    });
+
+    app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
+        console.log("put");
+        if (req.body.password){
+            const passwordMatch = await bcrypt.compare(req.body.password, req.user.password)
+            console.log("passwordMatch", passwordMatch);
+            if (passwordMatch){
+                User.update(req, res);
+            } else {
+                res.status(421).json({msg: "password doesn't match"})
+            }
+        }
+        //check if password is being provided in the request (i.e. they want to change password), then
+        //check if current password matches user password (using bcrypt (in userController))
+        //if it fails, break and respond 421 and flag "no match", else  User.update(req, res);
+    })
 };
