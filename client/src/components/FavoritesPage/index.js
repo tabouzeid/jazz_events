@@ -7,13 +7,14 @@ export default function FavoritesPage() {
     //query for user = 123 get all associated event id's
     //for event ids populate the favoritedevent
 
-    let favorites = [];
-    let results = [];
+    // let favorites = [];
 
+
+    const [favorites, setFavorites] = useState([]);
     useEffect(() => {
-        axios.get("/api/favorites").then((eventsList) => {
-            console.log(eventsList.data)
-            setEvent(eventsList.data)
+        axios.get("/api/favorites").then((favorites) => {
+            console.log(favorites.data)
+            setFavorites(favorites.data);
         })
     }, [])
 
@@ -30,13 +31,13 @@ export default function FavoritesPage() {
                                 <Event
                                     key={index}
                                     id={index}
-                                    date={results.date}
-                                    venueName={results.venueName}
-                                    address={results.address}
-                                    startTime={results.startTime}
-                                    eventName={results.eventName}
-                                    cover={results.cover}
-                                    sets={results.sets} />)}
+                                    date={favorite.date}
+                                    venueName={favorite.venueName}
+                                    address={favorite.address}
+                                    startTime={favorite.startTime}
+                                    eventName={favorite.eventName}
+                                    cover={favorite.cover}
+                                    sets={favorite.sets} />)}
                         </div>
                     </div>
                 </div>

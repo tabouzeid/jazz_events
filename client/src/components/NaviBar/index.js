@@ -11,8 +11,7 @@ const bgStyle = {
 };
 const style = {
     backgroundColor: `rgba(255, 255, 255, 0.7)`,
-    boxShadow: "1px 1px 8px 2px rgb(255, 255, 255)",
-
+    boxShadow: "1px 1px 8px 2px rgb(255, 255, 255)"
 };
 const logoStyle = {
     position: `absolute`,

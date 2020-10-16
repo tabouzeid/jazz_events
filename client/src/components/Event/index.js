@@ -1,4 +1,5 @@
 import React from "react";
+import musicNote from "../../assets/musicNote.png";
 
 function Event(props) {
 
@@ -15,18 +16,31 @@ function Event(props) {
 
 
     return (
-        <div className="card border-light mx-auto mt-3">
-            <button className="saveUnsave" onclick={props.saveorunsave}>{props.buttonText}</button>
-            <div >{props.date}: {props.eventName} at {props.venueName}</div>
-            <div className="card-body">
-                <h3 className="card-title">{props.startTime} / {props.address} / {props.cover}</h3>
-                <div>{props.sets.map(set => (
-                    <div>
-                        <p>{set.startTime}</p>
-                        <p>{set.artists}</p>
-                    </div>
-                ))}
+        <div className="mx-auto my-3 col-9">
+
+            <div className="d-flex justify-content-between border-bottom">
+
+                <h5 className="text-center">{props.eventName} at {props.venueName}</h5>
+                <div className="pb-1"><img src={musicNote} alt="music note" /></div>
+            </div>
+            <div>
+                <div className="d-flex justify-content-between mt-2">
+                    <h6>{props.address}</h6>
+                    <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onclick={props.saveorunsave}>save</button>
                 </div>
+                <ul>
+                    <li>Doors open at {props.startTime}</li>
+                    <li>Date: {props.date} </li>
+                    <li>Cover: ${props.cover}</li>
+                    <div>{props.sets.map(set => (
+                        <div>
+                            <li>{set.startTime}, {set.artistList}</li>
+
+                        </div>
+                    ))}
+                    </div>
+                </ul>
+
             </div>
         </div>
 
