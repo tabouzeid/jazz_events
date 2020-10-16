@@ -7,9 +7,6 @@ export default function FavoritesPage() {
     //query for user = 123 get all associated event id's
     //for event ids populate the favoritedevent
 
-    // let favorites = [];
-
-
     const [favorites, setFavorites] = useState([]);
     useEffect(() => {
         axios.get("/api/favorites").then((favorites) => {

@@ -27,6 +27,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  getFavorites: function(req, res) {
+    User
+      .findById(req.user._id)
+      .then(dbModel => res.json(dbModel.favorites))
+      .catch(err => res.status(422).json(err));
+  },
   updateFavorites: function(req, res) {
     User
       .findOneAndUpdate(  { _id: req.user._id}, { $set: { 'favorites' : req.body }})

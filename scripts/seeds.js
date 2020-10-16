@@ -2,14 +2,17 @@
 //startTime should be DateTime HH:MM
 
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+
 const Event = require("../model/Event.js");
+const User = require("../model/User.js");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/eventkeeper"
 );
 
-const seeds = [
+const eventSeeds = [
     {
         "date": new Date(Date.now() + 13),
         "venueName": "Open Source Gallery",
@@ -149,14 +152,59 @@ const seeds = [
     }
 ];
 
+const userSeed = [{
+    "email": "charnettb310@gmail.com",
+    "password": "password",
+    "name": "Charnett Brown",
+    "role": "admin",
+    "favorites": [{
+      "date": new Date(Date.now() + (86400000 * 7)),
+      "venueName": "Michiko Studios",
+      "address": "149 W 46th St floor 3, New York, NY 10036",
+      "eventName": "Richard Tabnik Quartet",
+      "cover": 20,
+      "sets": [
+          {
+              "startTime": "4pm",
+              "artistList": "Richard Tabnik, Harvey Diamond, Jeff Dingler, Skip Scott"
+          }
+      ]
+  }]
+}];
+
 Event
   .remove({})
-  .then(() => Event.collection.insertMany(seeds))
+  .then(() => Event.collection.insertMany(eventSeeds))
   .then(data => {
     console.log(data.result.n + " records inserted!");
-    process.exit(0);
+    User
+        .remove({})
+        .then(() => {
+            bcrypt.hash(userSeed[0].password, 10)
+            .then(hashedPassword => {
+                console.log(hashedPassword);
+                userSeed[0].password = hashedPassword;
+                User.create(userSeed[0])
+                .then(() => {
+                    console.log(data + " records inserted!");
+                    process.exit(0);
+                })
+                .catch(err => {
+                    console.log(err);
+                    process.exit(1);
+                })
+            }
+            )
+        })
+        .catch(err => {
+            console.error(err);
+            process.exit(1);
+        });
   })
   .catch(err => {
     console.error(err);
-    process.exit(1);
   });
+
+  
+
+
