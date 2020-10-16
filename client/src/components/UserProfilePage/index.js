@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./styles.css";
 import axios from 'axios';
 
 // const currentPassRef = useRef();
@@ -38,31 +39,63 @@ export default function UserProfilePage() {
     return (
         <div>
             <form onSubmit={updateSettings}>
-                <h1>User Settings</h1>
-
-                <h3>Change email</h3>
-                    Current email: <b>{user.email}</b><br />
-                <label for="email">New email:</label>
-                <input type="text" id="newEmail" name="email"
-                    minlength="8" required /><br />
-
-                <h3>Change name</h3>
-                    Current name: <b>{user.name}</b><br />
-                <label for="username">New name:</label>
-                <input type="text" id="newUsername" name="username"
-                    minlength="8" required /><br />
-
-                <h3>Change password</h3>
-                <label for="currentPassword">Current password:</label>
-                <input type="password" id="currentPassword" name="currentPassword"
-                    minlength="8" required /><br />
-                <span id="currentPasswordTest" ></span>
-                <label for="newPassword">New password:</label>
-                <input type="password" id="newPassword" name="newPassword"
-                    minlength="8" required /><br />
-                <label for="reenterNewPassword">Re-enter new password:</label>
-                <input type="password" id="reenterNewPassword" name="reenterNewPassword"
-                    minlength="8" required />
+            <h1>User Settings</h1>
+                <div className="form-group">
+                    <h3 className="heading">Change Email</h3>
+                    <b>Current email: </b> taher@taher.com <br/>
+                    <label for="newEmail">New email:</label>
+                    <input 
+                        type="email" 
+                        className="form-control" 
+                        id="newEmail" 
+                        name="email"
+                        placeholder="user@email.com"
+                        />
+                </div>
+                <div className="form-group">
+                    <h3 className="heading">Change Username</h3>
+                    <b>Current username: </b> taher <br/>
+                    <label for="newUsername">New username:</label>
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        id="newUsername" 
+                        name="username"
+                        placeholder="Enter new username"
+                        />
+                </div>
+                <div className="form-group">
+                    <h3 className="heading">Change Password</h3>
+                    <label for="currentPassword">Current password:</label>
+                    <input 
+                        type="password" 
+                        className="form-control" 
+                        id="currentPassword" 
+                        name="currentPassword"
+                        placeholder="Enter current password"
+                        minlength="8"
+                        />
+                    <span id="currentPasswordTest" ></span>
+                    <label for="newPassword">New password:</label>
+                    <input 
+                        type="password" 
+                        className="form-control" 
+                        id="newPassword" 
+                        name="newPassword"
+                        placeholder="Enter new password"
+                        minlength="8"
+                        />
+                    <label for="reenterNewPassword">Reenter new password:</label>
+                    <input 
+                        type="password" 
+                        className="form-control" 
+                        id="reenterNewPassword" 
+                        name="reenterNewPassword"
+                        placeholder="Reenter new password"
+                        minlength="8"
+                        />
+                </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     );
