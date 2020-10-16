@@ -2,16 +2,10 @@ const User = require("../model/User");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
-  findAll: function (req, res) {
-    User
-      .find()
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   findById: function (req, res) {
     User
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .findById(req.user._id)
+      .then(dbModel => res.json({"email":dbModel.email, "name":dbModel.name}))
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {

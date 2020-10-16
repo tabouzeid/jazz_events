@@ -1,7 +1,9 @@
 // Routes
 // =============================================================
 const Event = require('../controller/eventController');
+const User = require('../controller/userController');
 const AccessMiddleware = require("../config/middleware/isAuthenticated");
+const bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
     // Retrieves all events with a date field of today or later
@@ -39,4 +41,21 @@ module.exports = function(app) {
         Event.remove(req, res);
     });
 
+    app.get('/api/user/', AccessMiddleware.hasAccess, (req, res) => {
+        User.findById(req, res);
+    });
+
+    app.put('/api/user/', AccessMiddleware.hasAccess, (req, res) => {
+        if (req.body.password){
+            if (req.body.password === bcrypt.hash(req.user.password, 10)){
+                User.update(req, res);
+            }
+            console.error("no match");
+            res.status(421).json(err);
+        }
+        //check if password is being provided in the request (i.e. they want to change password), then
+        //check if current password matches user password (using bcrypt (in userController))
+        //if it fails, break and respond 421 and flag "no match", else  User.update(req, res);
+       
+    })
 };
