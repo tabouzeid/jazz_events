@@ -8,7 +8,6 @@ export default function FavoritesPage() {
     //for event ids populate the favoritedevent
 
     const [favorites, setFavorites] = useState([]);
-
     useEffect(() => {
         axios.get("/api/favorites").then((favorites) => {
             console.log(favorites.data)

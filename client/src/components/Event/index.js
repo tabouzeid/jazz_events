@@ -1,24 +1,49 @@
 import React from "react";
+import musicNote from "../../assets/musicNote.png";
 
 function Event(props) {
+
+    // <div class="card">
+    //     <h5 class="card-header">Featured</h5>
+    //     <div class="card-body">
+    //         <h5 class="card-title">Special title treatment</h5>
+    //         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    //         <a href="#" class="btn btn-primary">Go somewhere</a>
+    //     </div>
+    // </div>
+
+    /////////////
+
+
     return (
-        <div className="mx-auto">
-            <button className="saveUnsave" onclick={props.saveorunsave}>{props.buttonText}</button>
-            <h1>Events goes here</h1>
-            <div className="row">
-                <div className="col"><h2>{props.date}: {props.eventName} at {props.venueName}</h2>
-                    <h3>{props.startTime} / {props.address} / {props.cover}</h3></div>
+        <div className="mx-auto my-3 col-9">
+
+            <div className="d-flex justify-content-between border-bottom">
+
+                <h5 className="text-center">{props.eventName} at {props.venueName}</h5>
+                <div className="pb-1"><img src={musicNote} alt="music note" /></div>
             </div>
-            <div className="row">
-                <div className="col"><ul>{props.sets.map(set => (
-                    <li>
-                        <h1>{set.startTime}</h1>
-                        <h3>{set.artists}</h3>
-                    </li>
-                ))}
-                </ul></div>
+            <div>
+                <div className="d-flex justify-content-between mt-2">
+                    <h6>{props.address}</h6>
+                    <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onclick={props.saveorunsave}>save</button>
+                </div>
+                <ul>
+                    <li>Doors open at {props.startTime}</li>
+                    <li>Date: {props.date} </li>
+                    <li>Cover: ${props.cover}</li>
+                    <div>{props.sets.map(set => (
+                        <div>
+                            <li>{set.startTime}, {set.artistList}</li>
+
+                        </div>
+                    ))}
+                    </div>
+                </ul>
+
             </div>
         </div>
+
     )
 }
 
