@@ -39,9 +39,8 @@ export default function UserProfilePage() {
                         className="form-control" 
                         id="newEmail" 
                         name="email"
-                        placeholder="new@email.com"
-                        minlength="8"
-                        required />
+                        placeholder="user@email.com"
+                        />
                 </div>
                 <div className="form-group">
                     <h3 className="heading">Change Username</h3>
@@ -53,8 +52,7 @@ export default function UserProfilePage() {
                         id="newUsername" 
                         name="username"
                         placeholder="Enter new username"
-                        minlength="8"
-                        required />
+                        />
                 </div>
                 <div className="form-group">
                     <h3 className="heading">Change Password</h3>
@@ -66,7 +64,7 @@ export default function UserProfilePage() {
                         name="currentPassword"
                         placeholder="Enter current password"
                         minlength="8"
-                        required />
+                        />
                     <span id="currentPasswordTest" ></span>
                     <label for="newPassword">New password:</label>
                     <input 
@@ -76,7 +74,7 @@ export default function UserProfilePage() {
                         name="newPassword"
                         placeholder="Enter new password"
                         minlength="8"
-                        required />
+                        />
                     <label for="reenterNewPassword">Reenter new password:</label>
                     <input 
                         type="password" 
@@ -85,65 +83,11 @@ export default function UserProfilePage() {
                         name="reenterNewPassword"
                         placeholder="Reenter new password"
                         minlength="8"
-                        required />
+                        />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
-            //Leaving James' original code in case my reformatting above broke anything...
-            /* <form onSubmit={updateSettings}>
-            <div className="form-group">
-                <h3>Change email</h3>
-                <h3>Current email:</h3> <b>taher@taher.com</b>
-                <div className="form-group">
-                <label for="oldPass">New email:</label>
-                <input 
-                    type="text" 
-                    id="newEmail" 
-                    name="email"
-                    minlength="8" 
-                    required />
-                </div>
-                <div className="form-group">
-                <h3>Change username</h3>
-                    Current username: <b>taher</b><br />
-                <label for="oldPass">New username:</label>
-                <input 
-                    type="text" 
-                    id="newUsername" 
-                    name="username"
-                    minlength="8" 
-                    required /><br />
-                </div>
-                <h3>Change password</h3>
-                <div className="form-group">
-                <label for="currentPassword">Current password:</label>
-                <input 
-                    type="password" 
-                    id="currentPassword" 
-                    name="currentPassword"
-                    minlength="8" 
-                    required /><br />
-                <span id="currentPasswordTest" ></span>
-                </div>
-                <div className="form-group">
-                <label for="newPassword">New password:</label>
-                <input 
-                    type="password" 
-                    id="newPassword" 
-                    name="newPassword"
-                    minlength="8" 
-                    required /><br />
-                <label for="reenterNewPassword">Re-enter new password:</label>
-                <input 
-                    type="password" 
-                    id="reenterNewPassword" 
-                    name="reenterNewPassword"
-                    minlength="8" 
-                    required />
-                </div>
-            </div>
-            </form> */
     );
 
 }
