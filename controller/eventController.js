@@ -3,13 +3,15 @@ const Event = require("../model/Event");
 module.exports = {
   findAll: function (req, res) {
     Event
-      .find()
+      .find({})
+      .sort({date: 1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findAllWhere: function (req, res, whereClause) {
     Event
       .find(whereClause)
+      .sort({date: 1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
