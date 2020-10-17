@@ -31,6 +31,7 @@ export default function NaviBar(props) {
         axios.get("/logout")
             .then((response) => {
                 history.push("/");
+                window.location.reload(false);
             }).catch((error) => {
                 alert("An error occurred while logging out.");
             })
@@ -56,7 +57,7 @@ export default function NaviBar(props) {
                                     <a className="nav-link text-body" href="/userprofile">My Account</a>
                                     <a className="nav-link text-body" href="/addevent">Add Event</a>
                                     <a className="nav-link text-body" href="/favorites">Favorites</a>
-                                    <a className="nav-link text-body" onClick={handleLogout}>Logout</a>
+                                    <a className="nav-link text-body" href="#" onClick={handleLogout}>Logout</a>
                                 </div>
                             </li>
                         </ul>
@@ -79,7 +80,7 @@ export default function NaviBar(props) {
                                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                                     <a className="nav-link text-body" href="/userprofile">My Account</a>
                                     <a className="nav-link text-body" href="/favorites">Favorites</a>
-                                    <a className="nav-link text-body" onClick={handleLogout}>Logout</a>
+                                    <a className="nav-link text-body" href="#" onClick={handleLogout}>Logout</a>
                                 </div>
                             </li>
                         </ul>

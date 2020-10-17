@@ -57,6 +57,7 @@ export default function LoginPage() {
             })
                 .then((response) => {
                     setIsAuthenticated(response.data.success);
+                    window.location.reload(false);
                 })
                 .catch(error => {
                     console.log("There was an error: ", error);

@@ -49,9 +49,6 @@ function App() {
           <Route exact path={"/"}>
             <EventsPage />
           </Route>
-          <Route exact path={"/addartist"}>
-            <ArtistForm />
-          </Route>
           <Route exact path={"/addevent"}>
             <AddEvent />
           </Route>
