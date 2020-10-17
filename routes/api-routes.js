@@ -13,7 +13,6 @@ module.exports = function(app) {
         date.setMinutes(0);
         date.setSeconds(0);
         date.setMilliseconds(0);
-        console.log(date);
         Event.findAllWhere(req, res, {date: {$gte: date}});
     });
 
@@ -55,7 +54,6 @@ module.exports = function(app) {
     });
 
     app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
-        let updateFields = {};
         if (req.body.password){
             const passwordMatch = await bcrypt.compare(req.body.password, req.user.password)
             if (passwordMatch){
