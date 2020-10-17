@@ -28,7 +28,7 @@ export default function EventForm(props) {
                                 <label className="EventForm"><h3> VenueName </h3></label>
                                 <br></br>
                                 <input className="col-12 form-control"
-                                    value={props.musicevent.venuename}
+                                    value={props.musicevent.venueName}
                                     type="text"
                                     name="venueName"
                                     placeholder="Venue Name"
