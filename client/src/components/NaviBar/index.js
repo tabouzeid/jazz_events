@@ -30,9 +30,6 @@ export default function NaviBar() {
                     <a className="nav-link text-body" href="/login">Login</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-body" href="/signup">Signup</a>
-                </li>
-                <li className="nav-item">
                     <a className="nav-link text-body" href="/favorites">Favorites</a>
                 </li>
                 <li className="nav-item">

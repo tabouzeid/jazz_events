@@ -67,7 +67,6 @@ export default function LoginPage() {
         }
     }
 
-    
     if (isAuthenticated) {
         return <Redirect to='/' />;
     }
@@ -101,6 +100,11 @@ export default function LoginPage() {
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col text-center">
+                    <p><a href="/signup">Sign Up</a> for a new account!</p>
                 </div>
             </div>
         </div>
