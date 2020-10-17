@@ -25,10 +25,8 @@ export default function LoginPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("The email = ", email, " and the password = ", password);
-
         // Validate form entries    
         validateSubmit();
-
         event.target.reset();
     }
 
@@ -57,13 +55,13 @@ export default function LoginPage() {
             })
                 .then((response) => {
                     setIsAuthenticated(response.data.success);
+                    window.location.reload(false);
                 })
                 .catch(error => {
                     console.log("There was an error: ", error);
                     setIsAuthenticated(false);
                     alert("I'm sorry, we have encountered an error with your Login submission.");
                 })
-
         }
     }
 
