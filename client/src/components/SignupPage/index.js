@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 import { Redirect } from 'react-router'
-import axios from 'axios'
-import API from "../../utils/API";
 import "./styles.css"
+import API from "../../utils/API";
+import { use } from 'passport';
 
-export default function LoginPage() {
-    //set states for current user's email and password
+export default function SignInPage() {
+    // Set states for username, email, and password
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    useEffect(() => {
-        axios.get('/authenticated-only')
-        .then((response) => {
-            console.log("pass ", response)
-            setIsAuthenticated(response.data.success);
-        })
-        .catch((response) => {
-            console.log("catch ", response)
-            setIsAuthenticated(false);
-        });
-    }, []);
+    const [created, setCreated] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("The email = ", email, " and the password = ", password);
 
-        // Validate form entries    
+        // Validate form entries
         validateSubmit();
-
-        event.target.reset();
     }
 
     // Validate user email
@@ -39,36 +25,36 @@ export default function LoginPage() {
         return re.test(email);
     }
 
-    // Validate all form entries before querying the DB
+    // Validate all form entries before posting to the DB
     const validateSubmit = () => {
-        console.log("Validating email: ", email, " password: ", password);
-
-        if (email === "" || email === undefined || validateEmail(email) === false) {
+        if (name === "" || name === undefined || name.length < 2) {
+            return alert("Please enter a valid name.")
+        } else if (email === "" || email === undefined || validateEmail(email) === false) {
             return alert("Please enter a valid email.")
         } else if (password === "" || password === undefined || password.length < 8) {
-            return alert("Oops. Your password doesn't match. Please try again.")
+            return alert("Please enter a valid password of at least 8 characters.")
         } else {
-            console.log("Validation passed. Querying DB for email: ", email, " password: ", password);
+            console.log("Validation passed. Posting to DB email: ", email, " password: ", password);
             // If all conditions pass...
-            // Query Mongo DB for the user's info using & passport(?)...
-            API.login({
+            // Post the new user's info to the Mongo DB...
+            API.saveUser({
+                name: name,
                 email: email,
                 password: password
             })
-                .then((response) => {
-                    setIsAuthenticated(response.data.success);
+                .then(() => {
+                    alert("Your new account was successfully created");
+                    setCreated(true);
                 })
                 .catch(error => {
                     console.log("There was an error: ", error);
-                    setIsAuthenticated(false);
-                    alert("I'm sorry, we have encountered an error with your Login submission.");
+                    alert("I'm sorry, we have encountered an error with your Signup submission.");
                 })
-
         }
     }
 
-    if (isAuthenticated) {
-        return <Redirect to='/' />;
+    if(created){
+        return <Redirect to='/login' />;
     }
 
     return (
@@ -77,15 +63,27 @@ export default function LoginPage() {
                 <div className="col">
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
+                            <label><h3>Name:</h3></label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="name"
+                                placeholder="Enter your name."
+                                value={name}
+                                onChange={event => setName(event.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
                             <label><h3>Email:</h3></label>
                             <input
-                                className="col-12 form-control"
+                                className="form-control"
                                 type="email"
                                 name="email"
                                 placeholder="your@email.com"
                                 value={email}
                                 onChange={event => setEmail(event.target.value)}
                             />
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <div className="form-group">
                             <label><h3>Password:</h3></label>
@@ -100,11 +98,6 @@ export default function LoginPage() {
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col text-center">
-                    <p><a href="/signup">Sign Up</a> for a new account!</p>
                 </div>
             </div>
         </div>

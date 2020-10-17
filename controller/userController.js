@@ -2,16 +2,10 @@ const User = require("../model/User");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
-  findAll: function (req, res) {
-    User
-      .find()
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   findById: function (req, res) {
     User
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .findById(req.user._id)
+      .then(dbModel => res.json({"email":dbModel.email, "name":dbModel.name}))
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
@@ -27,10 +21,27 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
+  update: async function(req, res) {
+    let updatedFields = {};
+    if(req.body.name) {
+      updatedFields.name = req.body.name;
+    }
+    if(req.body.email) {
+      updatedFields.email = req.body.email;
+    }
+    if(req.body.password) {
+      updatedFields.password = await bcrypt.hash(req.body.password, 10);
+    }
+    console.log("going to update ",  req.user._id, "for fileds ", updatedFields)
     User
-      .findOneAndUpdate({ _id: req.user._id }, req.body)
+      .findOneAndUpdate({ _id: req.user._id }, updatedFields)
       .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json({msg: "could not update profile info"}));
+  },
+  getFavorites: function(req, res) {
+    User
+      .findById(req.user._id)
+      .then(dbModel => res.json(dbModel.favorites))
       .catch(err => res.status(422).json(err));
   },
   updateFavorites: function(req, res) {
@@ -57,9 +68,8 @@ module.exports = {
             bcrypt.hash(req.body.password, 10)
             .then(
               hashedPassword => {
-                console.log(hashedPassword);
                 User.create({
-                  username: req.body.username,
+                  name: req.body.name,
                   email: req.body.email,
                   password: hashedPassword,
                 })

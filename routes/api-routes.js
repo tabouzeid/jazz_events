@@ -1,7 +1,10 @@
 // Routes
 // =============================================================
 const Event = require('../controller/eventController');
+const User = require('../controller/userController');
 const AccessMiddleware = require("../config/middleware/isAuthenticated");
+const bcrypt = require("bcryptjs");
+const userController = require('../controller/userController');
 
 module.exports = function(app) {
     // Retrieves all events with a date field of today or later
@@ -11,7 +14,6 @@ module.exports = function(app) {
         date.setMinutes(0);
         date.setSeconds(0);
         date.setMilliseconds(0);
-        console.log(date);
         Event.findAllWhere(req, res, {date: {$gte: date}});
     });
 
@@ -39,4 +41,26 @@ module.exports = function(app) {
         Event.remove(req, res);
     });
 
+    // endpoint of all favorites of user (result is array of objects of favorite events)
+    app.get('/api/favorites', AccessMiddleware.hasAccess, (req, res) => {
+        userController.getFavorites(req, res);
+    });
+        // create endpoint for user for update user with array of favorites
+    app.put("/api/favorites", AccessMiddleware.hasAccess, function (req, res) {
+        userController.updateFavorites(req,res);
+    });
+
+    app.get('/api/user/', AccessMiddleware.hasAccess, (req, res) => {
+        User.findById(req, res);
+    });
+
+    app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
+        if (req.body.currentPassword){
+            const passwordMatch = await bcrypt.compare(req.body.currentPassword, req.user.password)
+            if (!passwordMatch) {
+                res.status(421).json({msg: "password doesn't match"})
+            }
+        }
+        userController.update(req, res);
+    })
 };

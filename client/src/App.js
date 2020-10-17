@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import NaviBar from './components/NaviBar';
 import EventsPage from './components/EventsPage';
-import ArtistForm from './components/ArtistForm';
 import FavoritesPage from './components/FavoritesPage';
 import LogInPage from './components/LogInPage';
-import SignInPage from './components/SignInPage';
+import SignupPage from './components/SignupPage';
 import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
 import UserContext from "../src/utils/UserContext";
@@ -15,28 +14,6 @@ import axios from 'axios'
 function App() {
   const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(false);
-  // function changeState(role) {
-  //   if (role === "admin") {
-  //     roles.admin = true;
-  //     roles.user = false;
-  //   }
-  //   else if (role === "user") {
-  //     roles.user = true;
-  //     roles.admin = false;
-  //   } else {
-  //     roles.admin = false;
-  //     roles.user = false;
-  //   }
-  //   setRoles({
-  //     ...roles,
-  //     role
-  //   });
-  // }
-  // useEffect(() => {
-  //   API.getRole((res) => {
-  //     setRoles(res);
-  //   });
-  // }, []);
 
   useEffect(() => {
     axios.get('/admin-only')
@@ -84,9 +61,9 @@ function App() {
           <Route exact path={"/login"}>
             <LogInPage />
           </Route>
-          <Route exact path={"/signin"}>
-            <SignInPage />
-          </Route>
+          <Route exact path={"/signup"}>
+          <SignupPage />
+        </Route>
           <Route exact path={"/userprofile"}>
             <UserProfilePage />
           </Route>

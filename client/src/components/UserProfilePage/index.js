@@ -1,59 +1,109 @@
-import React from 'react';
-// const currentPassRef = useRef();
-// const errorMsgRef = useRef();
-// const [currentPass, setCurrentPass] = useState("");
-// const [errorMsg, setErrorMsg] = useState("");
-
-// if (currentPass.current.value !== props.password) {
-//     setErrorMsg("Current password is incorrect.")
-// }
-
-
-//get user info by id
-
-//if newUsername == props.username, error "That already IS your username"
-//if newUsername already exists in database && is !== props.username, error "That username is already taken."
-//if after debounce (currentPass.current.value !== props.password), set span to "Current password is incorrect."
-//if (newEmail does not take the form ("letters/numbers/-/. not ending in -/."+"@"+"letters/numbers/-/. not ending in -/."+"."+"letters")), set span to "must be a valid email"
-//if after debounce (newPassword.current.value !== reenterNewPassword), set span to "Passwords do not match."
-
-//userID will be passed in. Fetch user info from database using ID. Store user info in "state"
-
-const updateSettings = (event) => {
-    //event.target.username.value will give you whats inside the field named "username"(line 41(right now))
-}
+import React, { useState, useEffect } from 'react';
+import "./styles.css";
+import axios from 'axios';
 
 export default function UserProfilePage() {
+    const [user, setUser] = useState({});
+
+    const updateSettings = (event) => {
+        event.preventDefault();
+        if(user.password !== user.reenterNewPassword){
+            alert('The password and re-entered password do not match');
+        } else {
+            let details = {
+                name: user.name,
+                email: user.email,
+                currentPassword: user.currentPassword,
+                password: user.password
+            }
+            console.log(details);
+            axios.put("/api/user", details)
+            .then((response) => {
+                alert("Your profile has been udpated");
+            })
+            .catch((err) =>{
+                alert("There was an error while updating your profile");
+            })
+        }
+    }
+
+    const changeField = (event) => {
+        user[event.target.name] = event.target.value;
+        setUser(user);
+    }
+
+    useEffect(() => {
+        axios.get("/api/user").then((res) => { setUser(res.data) })
+    }, []);
 
     return (
-        <div>
-            <form onSubmit={updateSettings}>
-                <h1>User Settings</h1>
-
-                <h3>Change email</h3>
-                    Current email: <b>taher@taher.com</b><br />
-                <label for="oldPass">New email:</label>
-                <input type="text" id="newEmail" name="email"
-                    minlength="8" required /><br />
-
-                <h3>Change username</h3>
-                    Current username: <b>taher</b><br />
-                <label for="oldPass">New username:</label>
-                <input type="text" id="newUsername" name="username"
-                    minlength="8" required /><br />
-
-                <h3>Change password</h3>
-                <label for="currentPassword">Current password:</label>
-                <input type="password" id="currentPassword" name="currentPassword"
-                    minlength="8" required /><br />
-                <span id="currentPasswordTest" ></span>
-                <label for="newPassword">New password:</label>
-                <input type="password" id="newPassword" name="newPassword"
-                    minlength="8" required /><br />
-                <label for="reenterNewPassword">Re-enter new password:</label>
-                <input type="password" id="reenterNewPassword" name="reenterNewPassword"
-                    minlength="8" required />
-            </form>
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <form onSubmit={updateSettings}>
+                        <h1>User Settings</h1>
+                        <div className="form-group">
+                            <h3 className="heading">Change Email</h3>
+                            <label>New email:</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                name="email"
+                                onChange={changeField}
+                                placeholder={user.email}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <h3 className="heading">Change Name</h3>
+                            <label>New username:</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="name"
+                                name="name"
+                                onChange={changeField}
+                                placeholder={user.name}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <h3 className="heading">Change Password</h3>
+                            <label>Current password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="currentPassword"
+                                name="currentPassword"
+                                onChange={changeField}
+                                placeholder="Enter current password"
+                                minLength="8"
+                            />
+                            <span id="currentPasswordTest" ></span>
+                            <label>New password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="newPassword"
+                                name="password"
+                                onChange={changeField}
+                                placeholder="Enter new password"
+                                minLength="8"
+                            />
+                            <label>Reenter new password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="reenterNewPassword"
+                                name="reenterNewPassword"
+                                onChange={changeField}
+                                placeholder="Reenter new password"
+                                minLength="8"
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 
