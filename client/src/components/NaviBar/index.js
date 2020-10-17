@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import Logo from "../../assets/bones_higer_res.png";
 import BrickWall from "../../assets/brick_wall_copy.jpg";
 import FadeIn from 'react-fade-in';
+import axios from 'axios';
 
 const bgStyle = {
     color: "white",
@@ -20,6 +22,17 @@ const logoStyle = {
     zIndex: "6"
 }
 export default function NaviBar() {
+    const history = useHistory();
+
+    const handleLogout = (event) => {
+        axios.get("/logout")
+        .then((response) => {
+            history.push("/");
+        }).catch((error) => {
+            alert("An error occurred while logging out.");
+        })
+    }
+
     return (<FadeIn>
         <div style={bgStyle}>
             <ul style={style} className="nav justify-content-end pt-2" id="navItems">
@@ -38,7 +51,7 @@ export default function NaviBar() {
                         <a className="nav-link text-body" href="/userprofile">My Account</a>
                         <a className="nav-link text-body" href="/addevent">Add Event</a>
                         <a className="nav-link text-body" href="/favorites">Favorites</a>
-                        <a className="nav-link text-body" href="/logout">Logout</a>
+                        <a className="nav-link text-body" onClick={handleLogout}>Logout</a>
                     </div>
                 </li>
             </ul>
