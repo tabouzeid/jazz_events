@@ -49,5 +49,9 @@ export default {
   saveEvent: function (savedEvent) {
     console.log("In API.js saveEvent");
     return axios.post("/api/event", savedEvent);
+  },
+  logout: function () {
+    console.log("loging out");
+    return axios.post("/logout");
   }
 };

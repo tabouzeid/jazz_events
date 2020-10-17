@@ -3,7 +3,6 @@ import Logo from "../../assets/bones_higer_res.png";
 import BrickWall from "../../assets/brick_wall_copy.jpg";
 import FadeIn from 'react-fade-in';
 import { Switch } from "react-router-dom";
-// import UserContext from "../../App";
 import UserContext from "../../utils/UserContext";
 
 const bgStyle = {
@@ -22,7 +21,7 @@ const logoStyle = {
     top: `16px`,
     left: `45px`
 }
-export default function NaviBar() {
+export default function NaviBar(props) {
     const { admin, user } = useContext(UserContext);
 
     // const admin = false;

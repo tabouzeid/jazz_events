@@ -10,7 +10,6 @@ import SignInPage from './components/SignInPage';
 import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
 import UserContext from "../src/utils/UserContext";
-// import API from "./utils/API";
 import axios from 'axios'
 
 function App() {
@@ -63,11 +62,12 @@ function App() {
     console.log(admin, user);
   }, []);
   console.log(admin, user);
+
   return (
     <UserContext.Provider value={{ admin, user }}>
 
       <Router>
-        <NaviBar />
+        <NaviBar/>
         <Switch>
           <Route exact path={"/"}>
             <EventsPage />
