@@ -15,6 +15,7 @@ export default function EventsPage() {
     const [events, setEvent] = useState([])
     const [favorites, setFavorites] = useState([]);
 
+
     useEffect(() => {
         axios.get("/api/event").then((eventsList) => {
             setEvent(eventsList.data)
