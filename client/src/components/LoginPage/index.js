@@ -1,11 +1,26 @@
-import React, { useState } from "react";
-import "./styles.css"
+import React, { useState, useEffect } from "react";
+import { Redirect } from 'react-router'
+import axios from 'axios'
 import API from "../../utils/API";
+import "./styles.css"
 
 export default function LoginPage() {
     //set states for current user's email and password
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        axios.get('/authenticated-only')
+        .then((response) => {
+            console.log("pass ", response)
+            setIsAuthenticated(response.data.success);
+        })
+        .catch((response) => {
+            console.log("catch ", response)
+            setIsAuthenticated(false);
+        });
+    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,15 +55,21 @@ export default function LoginPage() {
                 email: email,
                 password: password
             })
-                .then(() => {
-                    console.log("The email = ", email, " and the password = ", password, " were queried");
+                .then((response) => {
+                    setIsAuthenticated(response.data.success);
                 })
                 .catch(error => {
                     console.log("There was an error: ", error);
+                    setIsAuthenticated(false);
                     alert("I'm sorry, we have encountered an error with your Login submission.");
                 })
 
         }
+    }
+
+    
+    if (isAuthenticated) {
+        return <Redirect to='/' />;
     }
 
     return (
