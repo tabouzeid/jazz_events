@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router'
 import "./styles.css"
 import API from "../../utils/API";
+import { use } from 'passport';
 
 export default function SignInPage() {
     // Set states for username, email, and password
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [created, setCreated] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -41,12 +44,17 @@ export default function SignInPage() {
             })
                 .then(() => {
                     alert("Your new account was successfully created");
+                    setCreated(true);
                 })
                 .catch(error => {
                     console.log("There was an error: ", error);
                     alert("I'm sorry, we have encountered an error with your Signup submission.");
                 })
         }
+    }
+
+    if(created){
+        return <Redirect to='/login' />;
     }
 
     return (

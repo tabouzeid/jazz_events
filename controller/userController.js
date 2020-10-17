@@ -42,20 +42,21 @@ module.exports = {
     User
       .findById(req.user._id)
       .then(dbModel => res.json(dbModel.favorites))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err);
+      });
   },
   updateFavorites: function(req, res) {
     User
       .findOneAndUpdate(  { _id: req.user._id}, { $set: { 'favorites' : req.body }})
       .then(data => {
-        var hbsObject = {
-          favorites: data
-        };
-        // res.json(dbModel);
-        console.log(hbsObject);
-        res.json({ success: true, message: 'Your event was saved to favorites' });
+        this.getFavorites(req, res);
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err);
+      });
   },
   signup: function (req, res) {
     // console.log("hello", req);
@@ -69,7 +70,7 @@ module.exports = {
             .then(
               hashedPassword => {
                 User.create({
-                  username: req.body.username,
+                  name: req.body.name,
                   email: req.body.email,
                   password: hashedPassword,
                 })
