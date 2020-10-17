@@ -24,7 +24,7 @@ function Event(props) {
             <div>
                 <div className="d-flex justify-content-between mt-2">
                     <h6>{props.address}</h6>
-                    <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.saveorunsave}>save</button>
+                    <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
                 </div>
                 <ul>
                     <li>Doors open at {props.startTime}</li>
