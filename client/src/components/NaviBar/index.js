@@ -36,8 +36,6 @@ export default function NaviBar(props) {
                 alert("An error occurred while logging out.");
             })
     }
-    // const admin = false;
-    // const user = false;
 
     return (<Switch>
         { admin ?
@@ -102,9 +100,7 @@ export default function NaviBar(props) {
                         </div>
                     </FadeIn >
                 )
-
         }
-
     </Switch>
     )
 }
