@@ -24,19 +24,21 @@ export default function NaviBar() {
         <div style={bgStyle}>
             <ul style={style} className="nav justify-content-end pt-2" id="navItems">
                 <li className="nav-item">
-                    <a className="nav-link text-body" href="/" >Home</a>
+                    <a className="nav-link text-body" href="/" >Events</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link text-body" href="/login">Login</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link text-body" href="/favorites">Favorites</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-body" href="/addevent">Add Event</a>
-                </li>
-                <li className="nav-item mr-5">
-                    <a className="nav-link text-body" href="/userprofile">User Profile</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> Profile 
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                        <a className="nav-link text-body" href="/userprofile">My Account</a>
+                        <a className="nav-link text-body" href="/addevent">Add Event</a>
+                        <a className="nav-link text-body" href="/favorites">Favorites</a>
+                        <a className="nav-link text-body" href="/logout">Logout</a>
+                    </div>
                 </li>
             </ul>
             <img src={Logo} alt="bones_logo" style={logoStyle} />
