@@ -29,11 +29,12 @@ export default function NaviBar() {
                 <li className="nav-item">
                     <a className="nav-link text-body" href="/login">Login</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i> Profile 
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i className="fas fa-user"></i> <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" className="rounded-circle z-depth-0" alt="avatar" height="35"/> 
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                    
+                    <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                         <a className="nav-link text-body" href="/userprofile">My Account</a>
                         <a className="nav-link text-body" href="/addevent">Add Event</a>
                         <a className="nav-link text-body" href="/favorites">Favorites</a>
