@@ -153,7 +153,7 @@ const eventSeeds = [
 ];
 
 const userSeed = [{
-    "email": "charnettb310@gmail.com",
+    "email": "admin@gmail.com",
     "password": "password",
     "name": "Charnett Brown",
     "role": "admin",

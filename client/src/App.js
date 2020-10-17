@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import NaviBar from './components/NaviBar';
 import EventsPage from './components/EventsPage';
-import ArtistForm from './components/ArtistForm';
 import FavoritesPage from './components/FavoritesPage';
 import LoginPage from './components/LoginPage';
-import SignInPage from './components/SignInPage';
+import SignupPage from './components/SignupPage';
 import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
 
@@ -18,9 +17,6 @@ function App() {
         <Route exact path={"/"}>
           <EventsPage />
         </Route>
-        <Route exact path={"/addartist"}>
-          <ArtistForm />
-        </Route>
         <Route exact path={"/addevent"}>
           <AddEvent />
         </Route>
@@ -30,8 +26,8 @@ function App() {
         <Route exact path={"/login"}>
           <LoginPage />
         </Route>
-        <Route exact path={"/signin"}>
-          <SignInPage />
+        <Route exact path={"/signup"}>
+          <SignupPage />
         </Route>
         <Route exact path={"/userprofile"}>
           <UserProfilePage />

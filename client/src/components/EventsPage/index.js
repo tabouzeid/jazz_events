@@ -16,18 +16,16 @@ export default function EventsPage() {
 
     useEffect(() => {
         axios.get("/api/event").then((eventsList) => {
-            console.log(eventsList.data)
             setEvent(eventsList.data)
         })
     }, [])
 
-    const handleOnInputChange = ((eventsList) => {
+    const handleOnInputChange = (() => {
         const startdate = document.getElementById("searchInput").value;
         axios.get("/api/event/" + startdate).then((eventsList) => {
             setEvent(eventsList.data);
         })
     })
-
 
     return (
         <div className="mx-auto d-flex flex-column mt-5">
