@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from 'react';
+import UserContext from "../../utils/UserContext";
 import musicNote from "../../assets/musicNote.png";
+import { Switch } from "react-router-dom";
 
 function Event(props) {
 
@@ -13,7 +15,7 @@ function Event(props) {
     // </div>
 
     /////////////
-
+    const { admin, user } = useContext(UserContext);
 
     return (
         <div className="mx-auto my-3 col-9">
@@ -24,7 +26,14 @@ function Event(props) {
             <div>
                 <div className="d-flex justify-content-between mt-2">
                     <h6>{props.address}</h6>
-                    <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
+                    <Switch>
+                        { admin ? 
+                        (
+                            <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
+                        ) : user ? (
+                            <button className="btn btn-info my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
+                        ) : (<div></div>)}
+                    </Switch>
                 </div>
                 <ul>
                     <li>Doors open at {props.startTime}</li>
