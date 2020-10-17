@@ -15,15 +15,15 @@ export default {
     return axios.post("/api/signup", userInfo);
   },
   // Deletes the user with the given username
-  // Not sure if this is needed, since there is no delete
-  // button on the UserProfilePage at the moment
   deleteUser: function (userName) {
     return axios.delete("/api/user/" + userName);
   },
-
-  // Saves an Event to the database
   saveEvent: function (savedEvent) {
     console.log("In API.js saveEvent");
     return axios.post("/api/event", savedEvent);
+  },
+  logout: function () {
+    console.log("loging out");
+    return axios.post("/logout");
   }
 };

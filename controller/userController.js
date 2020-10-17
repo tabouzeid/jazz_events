@@ -70,7 +70,7 @@ module.exports = {
             .then(
               hashedPassword => {
                 User.create({
-                  username: req.body.username,
+                  name: req.body.name,
                   email: req.body.email,
                   password: hashedPassword,
                 })
