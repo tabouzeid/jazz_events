@@ -2,43 +2,44 @@ import React, { useState, useEffect } from 'react';
 import "./styles.css";
 import axios from 'axios';
 
-// const currentPassRef = useRef();
-// const errorMsgRef = useRef();
-// const [currentPass, setCurrentPass] = useState("");
-// const [errorMsg, setErrorMsg] = useState("");
-
-// if (currentPass.current.value !== props.password) {
-//     setErrorMsg("Current password is incorrect.")
-// }
-
-
-//get user info by id
-
-//if newUsername == props.username, error "That already IS your username"
-//if newUsername already exists in database && is !== props.username, error "That username is already taken."
-//if after debounce (currentPass.current.value !== props.password), set span to "Current password is incorrect."
-//if (newEmail does not take the form ("letters/numbers/-/. not ending in -/."+"@"+"letters/numbers/-/. not ending in -/."+"."+"letters")), set span to "must be a valid email"
-//if after debounce (newPassword.current.value !== reenterNewPassword), set span to "Passwords do not match."
-
-//userID will be passed in. Fetch user info from database using ID. Store user info in "state"
-
-const updateSettings = (event) => {
-
-    //event.target.username.value will give you whats inside the field named "username"(line 41(right now))
-}
-
 export default function UserProfilePage() {
     const [user, setUser] = useState({});
 
+    const updateSettings = (event) => {
+        event.preventDefault();
+        if(user.password !== user.reenterNewPassword){
+            alert('The password and re-entered password do not match');
+        } else {
+            let details = {
+                name: user.name,
+                email: user.email,
+                currentPassword: user.currentPassword,
+                password: user.password
+            }
+            console.log(details);
+            axios.put("/api/user", details)
+            .then((response) => {
+                alert("Your profile has been udpated");
+            })
+            .catch((err) =>{
+                alert("There was an error while updating your profile");
+            })
+        }
+    }
+
+    const changeField = (event) => {
+        user[event.target.name] = event.target.value;
+        setUser(user);
+    }
+
     useEffect(() => {
         axios.get("/api/user").then((res) => { setUser(res.data) })
-    }, [user]);
+    }, []);
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col">
-
                     <form onSubmit={updateSettings}>
                         <h1>User Settings</h1>
                         <div className="form-group">
@@ -47,19 +48,21 @@ export default function UserProfilePage() {
                             <input
                                 type="email"
                                 className="form-control"
-                                id="newEmail"
+                                id="email"
                                 name="email"
+                                onChange={changeField}
                                 placeholder={user.email}
                             />
                         </div>
                         <div className="form-group">
-                            <h3 className="heading">Change Username</h3>
+                            <h3 className="heading">Change Name</h3>
                             <label>New username:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                id="newUsername"
-                                name="username"
+                                id="name"
+                                name="name"
+                                onChange={changeField}
                                 placeholder={user.name}
                             />
                         </div>
@@ -71,6 +74,7 @@ export default function UserProfilePage() {
                                 className="form-control"
                                 id="currentPassword"
                                 name="currentPassword"
+                                onChange={changeField}
                                 placeholder="Enter current password"
                                 minLength="8"
                             />
@@ -80,7 +84,8 @@ export default function UserProfilePage() {
                                 type="password"
                                 className="form-control"
                                 id="newPassword"
-                                name="newPassword"
+                                name="password"
+                                onChange={changeField}
                                 placeholder="Enter new password"
                                 minLength="8"
                             />
@@ -90,6 +95,7 @@ export default function UserProfilePage() {
                                 className="form-control"
                                 id="reenterNewPassword"
                                 name="reenterNewPassword"
+                                onChange={changeField}
                                 placeholder="Reenter new password"
                                 minLength="8"
                             />

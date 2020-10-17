@@ -6,7 +6,6 @@ require("dotenv").config();
 
 module.exports = function (app) {
   app.post('/api/login', (req, res, next) => {
-    console.log("hello");
     const { email, password } = req.body
     if (!email || !password) {
       res.status(400).json({ success: false, msg: 'Invalid credentials' });

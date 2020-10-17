@@ -4,6 +4,7 @@ const Event = require('../controller/eventController');
 const User = require('../controller/userController');
 const AccessMiddleware = require("../config/middleware/isAuthenticated");
 const bcrypt = require("bcryptjs");
+const userController = require('../controller/userController');
 
 module.exports = function(app) {
     // Retrieves all events with a date field of today or later
@@ -54,16 +55,12 @@ module.exports = function(app) {
     });
 
     app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
-        if (req.body.password){
-            const passwordMatch = await bcrypt.compare(req.body.password, req.user.password)
-            if (passwordMatch){
-                User.update(req, res);
-            } else {
+        if (req.body.currentPassword){
+            const passwordMatch = await bcrypt.compare(req.body.currentPassword, req.user.password)
+            if (!passwordMatch) {
                 res.status(421).json({msg: "password doesn't match"})
             }
         }
-        //check if password is being provided in the request (i.e. they want to change password), then
-        //check if current password matches user password (using bcrypt (in userController))
-        //if it fails, break and respond 421 and flag "no match", else  User.update(req, res);
+        userController.update(req, res);
     })
 };
