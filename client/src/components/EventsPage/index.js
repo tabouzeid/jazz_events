@@ -3,6 +3,7 @@ import Event from "../Event"
 import Carousel from "../Carousel"
 import axios from "axios"
 import Footer from "../Footer"
+import { ChevronDownIcon } from '@primer/octicons-react'
 // import Logo from "../../assets/bones_higer_res.png";
 
 export default function EventsPage() {
@@ -47,6 +48,7 @@ export default function EventsPage() {
                     eventName={event.eventName}
                     cover={event.cover}
                     sets={event.sets} />)}
+            <ChevronDownIcon size={24} />
             <Footer />
         </div>
 

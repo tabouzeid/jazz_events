@@ -7,7 +7,7 @@ export default function UserProfilePage() {
 
     const updateSettings = (event) => {
         event.preventDefault();
-        if(user.password !== user.reenterNewPassword){
+        if (user.password !== user.reenterNewPassword) {
             alert('The password and re-entered password do not match');
         } else {
             let details = {
@@ -18,12 +18,12 @@ export default function UserProfilePage() {
             }
             console.log(details);
             axios.put("/api/user", details)
-            .then((response) => {
-                alert("Your profile has been udpated");
-            })
-            .catch((err) =>{
-                alert("There was an error while updating your profile");
-            })
+                .then((response) => {
+                    alert("Your profile has been udpated");
+                })
+                .catch((err) => {
+                    alert("There was an error while updating your profile");
+                })
         }
     }
 
@@ -39,9 +39,9 @@ export default function UserProfilePage() {
     return (
         <div className="container">
             <div className="row">
-                <div className="col">
+                <div className="col-8 mx-auto">
                     <form onSubmit={updateSettings}>
-                        <h1>User Settings</h1>
+                        <h1 className="text-center">User Settings</h1>
                         <div className="form-group">
                             <h3 className="heading">Change Email</h3>
                             <label>New email:</label>
@@ -89,7 +89,7 @@ export default function UserProfilePage() {
                                 placeholder="Enter new password"
                                 minLength="8"
                             />
-                            <label>Reenter new password:</label>
+                            <label>Confirm new password:</label>
                             <input
                                 type="password"
                                 className="form-control"

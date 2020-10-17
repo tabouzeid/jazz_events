@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 import axios from 'axios'
 import API from "../../utils/API";
 import "./styles.css"
+import Footer from "../Footer"
 
 export default function LoginPage() {
     //set states for current user's email and password
@@ -12,14 +13,14 @@ export default function LoginPage() {
 
     useEffect(() => {
         axios.get('/authenticated-only')
-        .then((response) => {
-            console.log("pass ", response)
-            setIsAuthenticated(response.data.success);
-        })
-        .catch((response) => {
-            console.log("catch ", response)
-            setIsAuthenticated(false);
-        });
+            .then((response) => {
+                console.log("pass ", response)
+                setIsAuthenticated(response.data.success);
+            })
+            .catch((response) => {
+                console.log("catch ", response)
+                setIsAuthenticated(false);
+            });
     }, []);
 
     const handleSubmit = (event) => {
@@ -72,41 +73,41 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label><h3>Email:</h3></label>
-                            <input
-                                className="col-12 form-control"
-                                type="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                value={email}
-                                onChange={event => setEmail(event.target.value)}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label><h3>Password:</h3></label>
-                            <input
-                                className="form-control"
-                                type="password"
-                                name="password"
-                                placeholder="Enter password here. Minimum of 8 characters."
-                                value={password}
-                                onChange={event => setPassword(event.target.value)}
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+        <div >
+            <div className="container">
+                <form onSubmit={handleSubmit} className="mx-auto col-8">
+                    <div className="form-group ">
+                        <label><h3>Email:</h3></label>
+                        <input
+                            className="form-control "
+                            type="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            value={email}
+                            onChange={event => setEmail(event.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label><h3>Password:</h3></label>
+                        <input
+                            className="form-control"
+                            type="password"
+                            name="password"
+                            placeholder="Enter password here. Minimum of 8 characters."
+                            value={password}
+                            onChange={event => setPassword(event.target.value)}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
             </div>
+
             <div className="row">
                 <div className="col text-center">
                     <p><a href="/signup">Sign Up</a> for a new account!</p>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

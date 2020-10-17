@@ -31,6 +31,7 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "@primer/octicons-react": "^11.0.0",
     "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.3",

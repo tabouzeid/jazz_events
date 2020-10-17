@@ -22,7 +22,7 @@ const logoStyle = {
 export default function NaviBar() {
     return (<FadeIn>
         <div style={bgStyle}>
-            <ul style={style} className="nav justify-content-end pt-2" id="navItems">
+            <ul style={style} className="nav justify-content-end pt-2 pr-4" id="navItems">
                 <li className="nav-item">
                     <a className="nav-link text-body" href="/" >Events</a>
                 </li>
@@ -30,8 +30,8 @@ export default function NaviBar() {
                     <a className="nav-link text-body" href="/login">Login</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i> Profile 
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> Profile
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                         <a className="nav-link text-body" href="/userprofile">My Account</a>

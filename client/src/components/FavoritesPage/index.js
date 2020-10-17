@@ -16,9 +16,9 @@ export default function FavoritesPage() {
     }, [])
 
     return (
-        <div className="container">
+        <div className="container mt-5">
             <div className="row">
-                <div className="col">
+                <div className="col-8 mx-auto">
                     <div className="card">
                         <div className="card-header">
                             Saved
