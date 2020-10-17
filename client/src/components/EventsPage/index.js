@@ -13,11 +13,15 @@ export default function EventsPage() {
     //     zIndex: "6"
     // }
     const [events, setEvent] = useState([])
+    const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
         axios.get("/api/event").then((eventsList) => {
             setEvent(eventsList.data)
-        })
+        }).then(axios.get("/api/favorites").then((favorites) => {
+            console.log(favorites.data)
+            setFavorites(favorites.data);
+        }))
     }, [])
 
     const handleOnInputChange = (() => {
@@ -26,6 +30,25 @@ export default function EventsPage() {
             setEvent(eventsList.data);
         })
     })
+
+    const saveEventToFavorites = (event) => {
+
+        let index = parseInt(event.target.getAttribute("index"));
+        console.log("index", index);
+
+        favorites.push(events[index]);
+        console.log("newFavorites", favorites);
+
+        axios.put("/api/favorites", favorites)
+        .then((response) => {
+            setFavorites(response.data);
+            console.log(response);
+            alert("Your favorites have been updated");
+        })
+        .catch((err) =>{
+            alert("There was an error while updating your favorites");
+        })
+    }
 
     return (
         <div className="mx-auto d-flex flex-column mt-5">
@@ -39,6 +62,7 @@ export default function EventsPage() {
             {events.map((event, index) =>
                 <Event
                     key={event._id}
+                    index={index}
                     id={index}
                     date={event.date}
                     venueName={event.venueName}
@@ -46,7 +70,9 @@ export default function EventsPage() {
                     startTime={event.startTime}
                     eventName={event.eventName}
                     cover={event.cover}
-                    sets={event.sets} />)}
+                    sets={event.sets}
+                    buttonBehavior={saveEventToFavorites}
+                    buttonText={"Save"}/>)}
             <Footer />
         </div>
 
