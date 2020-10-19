@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import "./styles.css";
 import axios from 'axios';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import FilesUploadComponent from '../Files-upload-component';
 
 export default function UserProfilePage() {
     const [user, setUser] = useState({});
 
     const updateSettings = (event) => {
         event.preventDefault();
-        if(user.password !== user.reenterNewPassword){
+        if (user.password !== user.reenterNewPassword) {
             alert('The password and re-entered password do not match');
         } else {
             let details = {
@@ -18,12 +20,12 @@ export default function UserProfilePage() {
             }
             console.log(details);
             axios.put("/api/user", details)
-            .then((response) => {
-                alert("Your profile has been udpated");
-            })
-            .catch((err) =>{
-                alert("There was an error while updating your profile");
-            })
+                .then((response) => {
+                    alert("Your profile has been udpated");
+                })
+                .catch((err) => {
+                    alert("There was an error while updating your profile");
+                })
         }
     }
 
@@ -40,7 +42,9 @@ export default function UserProfilePage() {
         <div className="container">
             <div className="row">
                 <div className="col">
+                <FilesUploadComponent />
                     <form onSubmit={updateSettings}>
+                    {/* <FilesUploadComponent /> */}
                         <h1>User Settings</h1>
                         <div className="form-group">
                             <h3 className="heading">Change Email</h3>
