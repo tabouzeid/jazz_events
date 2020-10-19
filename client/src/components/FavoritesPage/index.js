@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Event from '../Event';
 import axios from "axios";
 import { set } from 'mongoose';
+import Footer from '../Footer';
 
 export default function FavoritesPage() {
 
@@ -24,43 +25,38 @@ export default function FavoritesPage() {
         console.log("newFavorites", favorites);
 
         axios.put("/api/favorites", favorites)
-        .then((response) => {
-            setFavorites(response.data);
-            console.log(response);
-            alert("Your favorites have been updated");
-        })
-        .catch((err) =>{
-            alert("There was an error while updating your favorites");
-        })
+            .then((response) => {
+                setFavorites(response.data);
+                console.log(response);
+                alert("Your favorites have been updated");
+            })
+            .catch((err) => {
+                alert("There was an error while updating your favorites");
+            })
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row">
-                <div className="col-8 mx-auto">
-                    <div className="card">
-                        <div className="card-header">
-                            Saved
-                        </div>
-                        <div className="card-body">
-                            {favorites.map((favorite, index) =>
-                                <Event
-                                    key={index}
-                                    index={index}
-                                    id={index}
-                                    date={favorite.date}
-                                    venueName={favorite.venueName}
-                                    address={favorite.address}
-                                    startTime={favorite.startTime}
-                                    eventName={favorite.eventName}
-                                    cover={favorite.cover}
-                                    sets={favorite.sets}
-                                    buttonBehavior={deleteEventFromFavorites}
-                                    buttonText={"delete"}/>)}
-                        </div>
-                    </div>
-                </div>
+        <div className="mt-5">
+
+            <h2 className="text-center">Saved Events</h2>
+            <div className="mx-auto col-10 mt-5">
+                {favorites.map((favorite, index) =>
+                    <Event
+                        key={index}
+                        index={index}
+                        id={index}
+                        date={favorite.date}
+                        venueName={favorite.venueName}
+                        address={favorite.address}
+                        startTime={favorite.startTime}
+                        eventName={favorite.eventName}
+                        cover={favorite.cover}
+                        sets={favorite.sets}
+                        buttonBehavior={deleteEventFromFavorites}
+                        buttonText={"delete"} />)}
             </div>
+            <Footer />
         </div>
+
     );
 }

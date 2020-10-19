@@ -96,16 +96,16 @@ export default function LoginPage() {
                             onChange={event => setPassword(event.target.value)}
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn text-white" style={{ backgroundColor: "#1f60a8" }}>Submit</button>
                 </form>
             </div>
 
-            <div className="row">
-                <div className="col text-center">
-                    <p><a href="/signup">Sign Up</a> for a new account!</p>
-                </div>
+
+            <div className="col text-center mx-auto">
+                <p className="mb-5"><a href="/signup">Sign Up</a> for a new account!</p>
             </div>
-            <Footer />
+
+            <Footer style={{ position: "fixed", left: "0", bottom: "0" }} />
         </div>
     )
 }

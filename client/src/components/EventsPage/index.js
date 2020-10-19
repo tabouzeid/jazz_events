@@ -3,15 +3,9 @@ import Event from "../Event"
 import Carousel from "../Carousel"
 import axios from "axios"
 import Footer from "../Footer"
-// import Logo from "../../assets/bones_higer_res.png";
 
 export default function EventsPage() {
-    // const logoStyle = {
-    //     position: `absolute`,
-    //     top: `16px`,
-    //     left: `45px`,
-    //     zIndex: "6"
-    // }
+
     const [events, setEvent] = useState([])
     const [favorites, setFavorites] = useState([]);
 
@@ -58,7 +52,7 @@ export default function EventsPage() {
             <div className="input-group my-5 d-flex justify-content-center align-items-center">
                 <h5 className="mr-3 my-auto">Search Events by Date:</h5>
                 <input type="date" className="form-control col-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="searchInput" />
-                <button type="button" className="btn btn-info my-auto ml-3 btn-sm" onClick={handleOnInputChange}>Search</button>
+                <button type="button" style={{ backgroundColor: "#1f60a8" }} className="btn my-auto ml-3 btn-sm text-white" onClick={handleOnInputChange}>Search</button>
             </div>
             {events.map((event, index) =>
                 <Event
