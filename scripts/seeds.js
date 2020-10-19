@@ -8,8 +8,8 @@ const Event = require("../model/Event.js");
 const User = require("../model/User.js");
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/eventkeeper"
+    process.env.MONGODB_URI ||
+    "mongodb://localhost/eventkeeper"
 );
 
 const eventSeeds = [
@@ -152,59 +152,80 @@ const eventSeeds = [
     }
 ];
 
-const userSeed = [{
-    "email": "admin@gmail.com",
-    "password": "password",
-    "name": "Charnett Brown",
-    "role": "admin",
-    "favorites": [{
-      "date": new Date(Date.now() + (86400000 * 7)),
-      "venueName": "Michiko Studios",
-      "address": "149 W 46th St floor 3, New York, NY 10036",
-      "eventName": "Richard Tabnik Quartet",
-      "cover": 20,
-      "sets": [
-          {
-              "startTime": "4pm",
-              "artistList": "Richard Tabnik, Harvey Diamond, Jeff Dingler, Skip Scott"
-          }
-      ]
-  }]
-}];
+const userSeed = [
+    {
+        "email": "admin@gmail.com",
+        "password": "password",
+        "name": "Admin",
+        "role": "admin",
+        "favorites": [{
+            "date": new Date(Date.now() + (86400000 * 7)),
+            "venueName": "Michiko Studios",
+            "address": "149 W 46th St floor 3, New York, NY 10036",
+            "eventName": "Richard Tabnik Quartet",
+            "cover": 20,
+            "sets": [
+                {
+                    "startTime": "4pm",
+                    "artistList": "Richard Tabnik, Harvey Diamond, Jeff Dingler, Skip Scott"
+                }
+            ]
+        }]
+    },
+    {
+        "email": "user@gmail.com",
+        "password": "password",
+        "name": "User",
+        "role": "user",
+        "favorites": [{
+            "date": new Date(Date.now() + (86400000 * 7)),
+            "venueName": "Michiko Studios",
+            "address": "149 W 46th St floor 3, New York, NY 10036",
+            "eventName": "Richard Tabnik Quartet",
+            "cover": 20,
+            "sets": [
+                {
+                    "startTime": "4pm",
+                    "artistList": "Richard Tabnik, Harvey Diamond, Jeff Dingler, Skip Scott"
+                }
+            ]
+        }]
+    },
+];
 
 Event
-  .remove({})
-  .then(() => Event.collection.insertMany(eventSeeds))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    User
-        .remove({})
-        .then(() => {
-            bcrypt.hash(userSeed[0].password, 10)
-            .then(hashedPassword => {
-                console.log(hashedPassword);
-                userSeed[0].password = hashedPassword;
-                User.create(userSeed[0])
-                .then(() => {
-                    console.log(data + " records inserted!");
-                    process.exit(0);
+    .remove({})
+    .then(() => Event.collection.insertMany(eventSeeds))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        User
+            .remove({})
+            .then(() => {
+                userSeed.forEach((user) => {
+                    bcrypt.hash(user.password, 10)
+                        .then(hashedPassword => {
+                            user.password = hashedPassword;
+                            User.create(user)
+                                .then(() => {
+                                    console.log(user.name + " user inserted!");
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                    process.exit(1);
+                                })
+                        }
+                        )
                 })
-                .catch(err => {
-                    console.log(err);
-                    process.exit(1);
-                })
-            }
-            )
-        })
-        .catch(err => {
-            console.error(err);
-            process.exit(1);
-        });
-  })
-  .catch(err => {
-    console.error(err);
-  });
+            })
+            .catch(err => {
+                console.error(err);
+                process.exit(1);
+            });
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
-  
+
 
 

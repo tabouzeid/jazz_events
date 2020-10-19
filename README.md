@@ -9,3 +9,5 @@ This project is meant to serve as a site for jazz fans to find the non-mainstrea
 - [Nicole Graiff](https://github.com/keycole)
 - [Samson Wong](https://github.com/swong452)
 - [Brielle McCormick](https://github.com/BMccorm)
+
+![AppScreenshot](./client/src/assets/app_screenshot.png)

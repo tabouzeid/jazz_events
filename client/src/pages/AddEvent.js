@@ -29,7 +29,6 @@ function AddEvent() {
         const values = [...performances];
         values[index][event.target.name] = event.target.value;
         setPerformances(values);
-        console.log("Array performances ", performances);
     }
 
     const handleAddFields = () => {
@@ -37,7 +36,7 @@ function AddEvent() {
     }
 
     const handleRemoveFields = (index) => {
-        if (performances.length == 1) {
+        if (performances.length === 1) {
             alert("Sorry you cannot remove the only available Show Time and Performance fields")
         } else {
             const values = [...performances];
@@ -49,7 +48,6 @@ function AddEvent() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log("Array performances in Form SUbmit ", performances);
         let data = {
             date: mevents.date,
             venueName: mevents.venueName,
@@ -60,7 +58,6 @@ function AddEvent() {
             sets: performances
         }
 
-        console.log("When Submit form: DATA is:", data);
         API.saveEvent(data);
         //Empty the fields on the screen
         setEvents({

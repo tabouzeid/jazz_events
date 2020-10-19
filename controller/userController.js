@@ -32,7 +32,7 @@ module.exports = {
     if(req.body.password) {
       updatedFields.password = await bcrypt.hash(req.body.password, 10);
     }
-    console.log("going to update ",  req.user._id, "for fileds ", updatedFields)
+
     User
       .findOneAndUpdate({ _id: req.user._id }, updatedFields)
       .then(dbModel => res.json(dbModel))
@@ -43,7 +43,6 @@ module.exports = {
       .findById(req.user._id)
       .then(dbModel => res.json(dbModel.favorites))
       .catch(err => {
-        console.log(err);
         res.status(422).json(err);
       });
   },
@@ -54,12 +53,10 @@ module.exports = {
         this.getFavorites(req, res);
       })
       .catch(err => {
-        console.log(err);
         res.status(422).json(err);
       });
   },
   signup: function (req, res) {
-    // console.log("hello", req);
     User
       .findOne({ email: req.body.email })
         .then(doc => {
@@ -78,14 +75,13 @@ module.exports = {
                     res.send("User Created");
                   })
                   .catch(err => {
-                    console.log(err);
+                    res.status(422).json(err);
                   })
               }
             )
           }
         })
         .catch(err => {
-          console.log(err);
           res.status(422).json(err)
         });
   }

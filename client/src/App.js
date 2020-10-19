@@ -19,31 +19,22 @@ function App() {
   useEffect(() => {
     axios.get('/admin-only')
       .then((res) => {
-        console.log(res);
         setAdmin(res.data.success)
-        console.log(admin, user);
       })
       .catch((err) => {
-        console.log("error ", err)
         setAdmin(false);
       });
     axios.get('/authenticated-only')
       .then((res) => {
-        console.log(res);
         setUser(res.data.success)
-        console.log(admin, user);
       })
       .catch((err) => {
-        console.log("error ", err);
         setUser(false);
       });
-    console.log(admin, user);
   }, []);
-  console.log(admin, user);
 
   return (
     <UserContext.Provider value={{ admin, user }}>
-
       <Router>
         <NaviBar />
         <Switch>
@@ -68,7 +59,6 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-
     </UserContext.Provider>
   );
 }
