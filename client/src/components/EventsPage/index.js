@@ -14,7 +14,6 @@ export default function EventsPage() {
         axios.get("/api/event").then((eventsList) => {
             setEvent(eventsList.data)
         }).then(axios.get("/api/favorites").then((favorites) => {
-            console.log(favorites.data)
             setFavorites(favorites.data);
         }))
     }, [])
@@ -27,17 +26,12 @@ export default function EventsPage() {
     })
 
     const saveEventToFavorites = (event) => {
-
         let index = parseInt(event.target.getAttribute("index"));
-        console.log("index", index);
-
         favorites.push(events[index]);
-        console.log("newFavorites", favorites);
 
         axios.put("/api/favorites", favorites)
             .then((response) => {
                 setFavorites(response.data);
-                console.log(response);
                 alert("Your favorites have been updated");
             })
             .catch((err) => {

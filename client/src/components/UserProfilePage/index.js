@@ -16,7 +16,6 @@ export default function UserProfilePage() {
                 currentPassword: user.currentPassword,
                 password: user.password
             }
-            console.log(details);
             axios.put("/api/user", details)
                 .then((response) => {
                     alert("Your profile has been udpated");

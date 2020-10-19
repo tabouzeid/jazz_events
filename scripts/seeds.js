@@ -182,7 +182,6 @@ Event
         .then(() => {
             bcrypt.hash(userSeed[0].password, 10)
             .then(hashedPassword => {
-                console.log(hashedPassword);
                 userSeed[0].password = hashedPassword;
                 User.create(userSeed[0])
                 .then(() => {
