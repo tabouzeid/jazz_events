@@ -22,9 +22,9 @@ export default class FilesUploadComponent extends Component {
         e.preventDefault()
         // const formData = new FormData()
         // formData.append('profileImg', this.state.profileImg)
-        console.log(this.state.profileImg);
+        console.log(this.state.profileImg.name);
         axios.put("/api/user", {
-            profileImg: this.state.profileImg
+            profileImg: this.state.profileImg.name
         }).then(res => {
             console.log(res)
         })

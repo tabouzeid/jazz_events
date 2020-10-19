@@ -10,6 +10,7 @@ import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
 import UserContext from "../src/utils/UserContext";
 import axios from 'axios'
+import Footer from './components/Footer';
 
 function App() {
   const [admin, setAdmin] = useState(false);
@@ -18,9 +19,7 @@ function App() {
   useEffect(() => {
     axios.get('/admin-only')
       .then((res) => {
-        console.log(res);
         setAdmin(res.data.success)
-        console.log(admin, user);
       })
       .catch((err) => {
         console.log("error ", err)
@@ -28,23 +27,18 @@ function App() {
       });
     axios.get('/authenticated-only')
       .then((res) => {
-        console.log(res);
         setUser(res.data.success)
-        console.log(admin, user);
       })
       .catch((err) => {
         console.log("error ", err);
         setUser(false);
       });
-    console.log(admin, user);
   }, []);
-  console.log(admin, user);
 
   return (
     <UserContext.Provider value={{ admin, user }}>
-
       <Router>
-        <NaviBar/>
+        <NaviBar />
         <Switch>
           <Route exact path={"/"}>
             <EventsPage />
@@ -59,12 +53,13 @@ function App() {
             <LoginPage />
           </Route>
           <Route exact path={"/signup"}>
-          <SignupPage />
-        </Route>
+            <SignupPage />
+          </Route>
           <Route exact path={"/userprofile"}>
             <UserProfilePage />
           </Route>
         </Switch>
+        <Footer />
       </Router>
 
     </UserContext.Provider>

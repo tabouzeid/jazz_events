@@ -53,8 +53,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 
-// app.use('/api', api)
-
 app.use((req, res, next) => {
   // Error goes via `next()` method
   setImmediate(() => {

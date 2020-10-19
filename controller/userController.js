@@ -101,7 +101,7 @@ module.exports = {
     if (req.body.profileImg) {
       // console.log(url + '/client/public/' + req.file.filename);
       console.log(req.body.profileImg);
-      updatedFields.profileImg = url + '/client/public/' + req.body.profileImg.name;
+      updatedFields.profileImg = url + '/client/public/' + req.body.profileImg;
     }
     console.log("going to update ", req.user._id, "for fileds ", updatedFields)
     User
