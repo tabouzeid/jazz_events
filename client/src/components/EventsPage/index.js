@@ -41,7 +41,6 @@ export default function EventsPage() {
 
     return (
         <div className="mx-auto d-flex flex-column mt-5">
-            {/* <img src={Logo} alt="bones_logo" style={logoStyle} /> */}
             <Carousel />
             <div className="input-group my-5 d-flex justify-content-center align-items-center">
                 <h5 className="mr-3 my-auto">Search Events by Date:</h5>

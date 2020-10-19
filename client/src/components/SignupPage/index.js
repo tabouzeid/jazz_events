@@ -44,53 +44,50 @@ export default function SignInPage() {
         }
     }
 
-    if(created){
+    if (created) {
         return <Redirect to='/login' />;
     }
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label><h3>Name:</h3></label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                name="name"
-                                placeholder="Enter your name."
-                                value={name}
-                                onChange={event => setName(event.target.value)}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label><h3>Email:</h3></label>
-                            <input
-                                className="form-control"
-                                type="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                value={email}
-                                onChange={event => setEmail(event.target.value)}
-                            />
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div className="form-group">
-                            <label><h3>Password:</h3></label>
-                            <input
-                                className="form-control"
-                                type="password"
-                                name="password"
-                                placeholder="Enter password here. Minimum of 8 characters."
-                                value={password}
-                                onChange={event => setPassword(event.target.value)}
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
+        <div className="container mx-auto col-6 pb-2 mb-2">
+
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label><h3>Name:</h3></label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="name"
+                        placeholder="Enter your name."
+                        value={name}
+                        onChange={event => setName(event.target.value)}
+                    />
                 </div>
-            </div>
+                <div className="form-group">
+                    <label><h3>Email:</h3></label>
+                    <input
+                        className="form-control"
+                        type="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        value={email}
+                        onChange={event => setEmail(event.target.value)}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div className="form-group">
+                    <label><h3>Password:</h3></label>
+                    <input
+                        className="form-control"
+                        type="password"
+                        name="password"
+                        placeholder="Enter password here. Minimum of 8 characters."
+                        value={password}
+                        onChange={event => setPassword(event.target.value)}
+                    />
+                </div>
+                <button type="submit" style={{ backgroundColor: "#1f60a8" }} className="btn btn-primary mb-2 text-white">Submit</button>
+            </form>
         </div>
     )
 }
