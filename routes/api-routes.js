@@ -25,7 +25,6 @@ module.exports = function(app) {
     // Create a new event
     // admin check for this route
     app.post('/api/event', AccessMiddleware.hasAdminAccess, (req, res) => {
-        console.log("api-routes.js, api.post");
         Event.create(req, res)
     });
     

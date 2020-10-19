@@ -31,7 +31,7 @@ function Event(props) {
         "Nov",
         "Dec"
     ]
-
+    
     let eventDate = new Date(props.date);
 
     return (
@@ -39,7 +39,7 @@ function Event(props) {
             <div className="d-flex flex-column mr-5 my-auto">
 
                 <h6 className="my-0">{days[eventDate.getDay()]}</h6>
-                <h3 className="my-0">{months[eventDate.getMonth()] + " " + eventDate.getDate()}</h3>
+                <h3 className="my-0">{months[eventDate.getMonth()] + " " + eventDate.getUTCDate()}</h3>
                 <h6 className="my-0">{eventDate.getFullYear()}</h6>
 
             </div>
