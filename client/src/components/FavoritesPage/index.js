@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Event from '../Event';
 import axios from "axios";
-import { set } from 'mongoose';
-
 
 export default function FavoritesPage() {
 
@@ -11,7 +9,6 @@ export default function FavoritesPage() {
     const [favorites, setFavorites] = useState([]);
     useEffect(() => {
         axios.get("/api/favorites").then((favorites) => {
-            console.log(favorites.data)
             setFavorites(favorites.data);
         })
     }, [])
@@ -19,15 +16,12 @@ export default function FavoritesPage() {
     const deleteEventFromFavorites = (event) => {
 
         let index = parseInt(event.target.getAttribute("index"));
-        console.log("index", index);
 
         favorites.splice(index, 1);
-        console.log("newFavorites", favorites);
 
         axios.put("/api/favorites", favorites)
             .then((response) => {
                 setFavorites(response.data);
-                console.log(response);
                 alert("Your favorites have been updated");
             })
             .catch((err) => {
@@ -53,7 +47,7 @@ export default function FavoritesPage() {
                         cover={favorite.cover}
                         sets={favorite.sets}
                         buttonBehavior={deleteEventFromFavorites}
-                        buttonText={"delete"} />)}
+                        buttonText={"Delete"} />)}
             </div>
         </div>
 

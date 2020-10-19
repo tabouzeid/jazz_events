@@ -52,14 +52,12 @@ function Event(props) {
                 <div>
                     <div className="d-flex justify-content-between mt-2">
                         <h6>{props.address}</h6>
-                        <Switch>
-                            {admin ?
-                                (
-                                    <button className="btn btn-light my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
-                                ) : user ? (
-                                    <button className="btn btn-light my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
-                                ) : (<div></div>)}
-                        </Switch>
+                        {admin ?
+                            (
+                                <button className="btn btn-light my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
+                            ) : user ? (
+                                <button className="btn btn-light my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
+                            ) : (<div></div>)}
                     </div>
                     <div className="mt-3">
                         {props.sets.map((set, index) => (

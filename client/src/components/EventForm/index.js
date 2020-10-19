@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function EventForm(props) {
-    console.log("event form, props is", props.musicevent)
     return (
         <div>
             <form className="col-10 mx-auto" >
