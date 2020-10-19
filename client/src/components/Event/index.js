@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import UserContext from "../../utils/UserContext";
 import musicNote from "../../assets/musicNote.png";
-import { Switch } from "react-router-dom";
 
 function Event(props) {
 

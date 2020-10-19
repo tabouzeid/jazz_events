@@ -62,7 +62,6 @@ function AddEvent() {
             sets: performances
         }
 
-        console.log("When Submit form: DATA is:", data);
         API.saveEvent(data);
         //Empty the fields on the screen
         setEvents({

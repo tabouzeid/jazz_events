@@ -32,7 +32,6 @@ export default function EventsPage() {
         axios.put("/api/favorites", favorites)
             .then((response) => {
                 setFavorites(response.data);
-                console.log(response);
                 alert("Your favorites have been updated");
             })
             .catch((err) => {
