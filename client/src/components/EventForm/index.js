@@ -28,7 +28,7 @@ export default function EventForm(props) {
                         onChange={props.handleInputChange}
                     />
                 </div>
-
+      
                 <div className="form-group">
                     <label className="EventForm"><h3> Address </h3></label>
                     <br></br>

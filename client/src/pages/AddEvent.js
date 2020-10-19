@@ -41,9 +41,14 @@ function AddEvent() {
     }
 
     const handleRemoveFields = (index) => {
-        const values = [...performances];
-        values.splice(index, 1);
-        setPerformances(values);
+        if ( performances.length == 1) {
+            alert("Sorry you cannot remove the only available Show Time and Performance fields")
+        } else {
+            const values = [...performances];
+            values.splice(index, 1);
+            setPerformances(values);
+        }
+        
     }
 
     const handleFormSubmit = (e) => {
@@ -61,6 +66,15 @@ function AddEvent() {
 
         console.log("When Submit form: DATA is:", data);
         API.saveEvent(data);
+        //Empty the fields on the screen
+        setEvents({
+            date: "",
+            venueName: "",
+            address: "",
+            eventName: "",
+            cover: ""
+        });
+        setPerformances([{ startTime: "", artistList: "" }]);
     }
 
     return (
