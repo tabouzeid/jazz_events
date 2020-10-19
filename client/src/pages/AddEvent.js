@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import EventForm from "../components/EventForm";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
 import API from "../utils/API";
 import { CalendarPlusFill, CalendarMinusFill } from "react-bootstrap-icons";
-import "./style.css"
 
 function AddEvent() {
 
@@ -41,14 +37,14 @@ function AddEvent() {
     }
 
     const handleRemoveFields = (index) => {
-        if ( performances.length == 1) {
+        if (performances.length == 1) {
             alert("Sorry you cannot remove the only available Show Time and Performance fields")
         } else {
             const values = [...performances];
             values.splice(index, 1);
             setPerformances(values);
         }
-        
+
     }
 
     const handleFormSubmit = (e) => {
@@ -78,70 +74,57 @@ function AddEvent() {
     }
 
     return (
-        <Container fluid>
-            <Container>
-                <Row>
-                    <Col size="8">
-                        <EventForm
-                            musicevent={mevents}
-                            handleInputChange={handleInputChange}
-                            handleFormSubmit={handleFormSubmit}
-                        />
-                    </Col>
-                    <Col size="12">
-                        <div>
-                            <h2> Show Time and Performers </h2>
+        <div className="container col-9 mt-5">
+            <h1 className="text-center">Add Event</h1>
+            <EventForm
+                musicevent={mevents}
+                handleInputChange={handleInputChange}
+                handleFormSubmit={handleFormSubmit}
+            />
+            <div className="mx-auto mt-0">
+                <h2 className="text-center pb-3"> Show Time and Performers </h2>
+                <form className="my-0 mx-auto">
+
+                    {performances.map((performance, index) => (
+                        <div className="d-flex justify-content-center" key={index}>
+                            <input
+                                className="Btn mr-2"
+                                type="time"
+                                name="startTime"
+                                label="Show Start Time"
+                                value={performance.startTime}
+                                onChange={event => handlePerformanceChange(index, event)} />
+
+
+                            <input
+                                className="Btn mx-2"
+                                type="text"
+                                style={{
+                                    fontFamily: "'Raleway', sans-serif"
+                                }}
+                                name="artistList"
+                                label="Show Performer"
+                                value={performance.artistList}
+                                onChange={event => handlePerformanceChange(index, event)} />
+
+                            <CalendarPlusFill
+                                size={30}
+                                onClick={() => handleAddFields()}
+                                className="mx-2" />
+
+                            <CalendarMinusFill
+                                size={30}
+                                onClick={() => handleRemoveFields(index)} />
                         </div>
+                    ))}
 
-                        <Row>
-                            <form>
-                                {performances.map((performance, index) => (
-                                    <div key={index}>
-                                        <input
-                                            className="Btn"
-                                            type="time"
-                                            name="startTime"
-                                            label="Show Start Time"
-                                            value={performance.startTime}
-                                            onChange={event => handlePerformanceChange(index, event)} />
+                </form>
+                <div className="d-flex justify-content-center mb-5">
+                    <button type="submit" className="btn mx-auto text-white" style={{ backgroundColor: "#1f60a8" }} onClick={handleFormSubmit}>
+                        Submit</button></div>
+            </div>
+        </div >
 
-
-                                        <input
-                                            className="Btn"
-                                            type="text"
-                                            name="artistList"
-                                            label="Show Performer"
-                                            value={performance.artistList}
-                                            onChange={event => handlePerformanceChange(index, event)} />
-
-                                        <CalendarPlusFill
-                                            size={40}
-                                            onClick={() => handleAddFields()} />
-
-                                        <CalendarMinusFill
-                                            size={40}
-                                            onClick={() => handleRemoveFields(index)} />
-                                    </div>
-                                ))}
-
-                            </form>
-                        </Row>
-                    </Col>
-                    <Col size="12">
-                        <br></br>
-                        <Row>
-                            <div>
-                                <button type="submit" className="submitBtn btn btn-primary" onClick={handleFormSubmit}>
-                                    Submit
-                             </button>
-                            </div>
-                        </Row>
-                    </Col>
-
-                </Row>
-                <br></br>
-            </Container>
-        </Container>
     )
 } // AddEvent 
 

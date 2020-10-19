@@ -71,7 +71,7 @@ export default function LoginPage() {
 
     return (
         <div >
-            <div className="container">
+            <div className="container mb-5">
                 <form onSubmit={handleSubmit} className="mx-auto col-8">
                     <div className="form-group ">
                         <label><h3>Email:</h3></label>
@@ -100,8 +100,8 @@ export default function LoginPage() {
             </div>
 
 
-            <div className="col text-center mx-auto">
-                <p className="mb-5"><a href="/signup">Sign Up</a> for a new account!</p>
+            <div className="col text-center mx-auto pb-5 mb-5">
+                <p style={{ marginBottom: "40px" }}><a href="/signup">Sign Up</a> for a new account!</p>
             </div>
         </div>
     )
