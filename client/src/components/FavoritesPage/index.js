@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Event from '../Event';
 import axios from "axios";
 import { set } from 'mongoose';
-import Footer from '../Footer';
+
 
 export default function FavoritesPage() {
 
@@ -55,7 +55,6 @@ export default function FavoritesPage() {
                         buttonBehavior={deleteEventFromFavorites}
                         buttonText={"delete"} />)}
             </div>
-            <Footer />
         </div>
 
     );

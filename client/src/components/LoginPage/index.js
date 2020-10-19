@@ -3,7 +3,6 @@ import { Redirect } from 'react-router'
 import axios from 'axios'
 import API from "../../utils/API";
 import "./styles.css"
-import Footer from "../Footer"
 
 export default function LoginPage() {
     //set states for current user's email and password
@@ -104,8 +103,6 @@ export default function LoginPage() {
             <div className="col text-center mx-auto">
                 <p className="mb-5"><a href="/signup">Sign Up</a> for a new account!</p>
             </div>
-
-            <Footer style={{ position: "fixed", left: "0", bottom: "0" }} />
         </div>
     )
 }

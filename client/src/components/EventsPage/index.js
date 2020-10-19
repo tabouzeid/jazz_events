@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Event from "../Event"
 import Carousel from "../Carousel"
 import axios from "axios"
-import Footer from "../Footer"
+
 
 export default function EventsPage() {
 
@@ -68,7 +68,7 @@ export default function EventsPage() {
                     sets={event.sets}
                     buttonBehavior={saveEventToFavorites}
                     buttonText={"Save"} />)}
-            <Footer />
+
         </div>
 
     );
