@@ -81,7 +81,7 @@ function AddEvent() {
         <Container fluid>
             <Container>
                 <Row>
-                    <Col size="12">
+                    <Col size="8">
                         <EventForm
                             musicevent={mevents}
                             handleInputChange={handleInputChange}

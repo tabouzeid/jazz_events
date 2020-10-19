@@ -89,7 +89,7 @@ export default function UserProfilePage() {
                                 placeholder="Enter new password"
                                 minLength="8"
                             />
-                            <label>Reenter new password:</label>
+                            <label>Confirm new password:</label>
                             <input
                                 type="password"
                                 className="form-control"

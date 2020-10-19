@@ -10,6 +10,7 @@ import UserProfilePage from './components/UserProfilePage';
 import AddEvent from './pages/AddEvent';
 import UserContext from "../src/utils/UserContext";
 import axios from 'axios'
+import Footer from './components/Footer';
 
 function App() {
   const [admin, setAdmin] = useState(false);
@@ -44,7 +45,7 @@ function App() {
     <UserContext.Provider value={{ admin, user }}>
 
       <Router>
-        <NaviBar/>
+        <NaviBar />
         <Switch>
           <Route exact path={"/"}>
             <EventsPage />
@@ -59,12 +60,13 @@ function App() {
             <LoginPage />
           </Route>
           <Route exact path={"/signup"}>
-          <SignupPage />
-        </Route>
+            <SignupPage />
+          </Route>
           <Route exact path={"/userprofile"}>
             <UserProfilePage />
           </Route>
         </Switch>
+        <Footer />
       </Router>
 
     </UserContext.Provider>

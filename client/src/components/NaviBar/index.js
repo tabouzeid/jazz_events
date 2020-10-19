@@ -38,11 +38,11 @@ export default function NaviBar(props) {
     }
 
     return (<Switch>
-        { admin ?
+        {admin ?
             (
                 <FadeIn>
                     <div style={bgStyle}>
-                        <ul style={style} className="nav justify-content-end pt-2" id="navItems">
+                        <ul style={style} className="nav justify-content-end pt-2 pr-4" id="navItems">
                             <li className="nav-item">
                                 <a className="nav-link text-body" href="/" >Events</a>
                             </li>
@@ -66,7 +66,7 @@ export default function NaviBar(props) {
             user ? (
                 <FadeIn>
                     <div style={bgStyle}>
-                        <ul style={style} className="nav justify-content-end pt-2" id="navItems">
+                        <ul style={style} className="nav justify-content-end pt-2 pr-4" id="navItems">
                             <li className="nav-item">
                                 <a className="nav-link text-body" href="/" >Events</a>
                             </li>
@@ -88,7 +88,7 @@ export default function NaviBar(props) {
             ) : (
                     <FadeIn>
                         <div style={bgStyle}>
-                            <ul style={style} className="nav justify-content-end pt-2" id="navItems">
+                            <ul style={style} className="nav justify-content-end pt-2 pr-4" id="navItems">
                                 <li className="nav-item">
                                     <a className="nav-link text-body" href="/" >Events</a>
                                 </li>
