@@ -29,11 +29,6 @@ mongoose.Promise = global.Promise;
 const dbConfig = process.env.MONGODB_URI || "mongodb://localhost/eventkeeper";
 mongoose.connect(dbConfig, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
-app.use(function (err, req, res, next) {
-  console.error(err.message);
-  if (!err.statusCode) err.statusCode = 500;
-  res.status(err.statusCode).send(err.message);
-});
 //================ end of multer =================
 
 // Send every other request to the React app
