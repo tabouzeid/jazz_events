@@ -117,7 +117,7 @@ function AddEvent() {
 
                 </form>
                 <div className="d-flex justify-content-center mb-5">
-                    <button type="submit" className="btn mx-auto text-white" style={{ backgroundColor: "#1f60a8" }} onClick={handleFormSubmit}>
+                    <button type="submit" className="btn mx-auto text-white" style={{ backgroundColor: "#0060a4" }} onClick={handleFormSubmit}>
                         Submit</button></div>
             </div>
         </div >
