@@ -7,44 +7,29 @@ import JazzFour from "../../assets/jazz_image_four.jpg";
 
 
 export default function Carousel() {
-
-
-
     return (
         <div id="carouselExampleCaptions" className="carousel cycle carousel-fade mx-auto col-7 my-4" data-ride="carousel">
             {/* first Slide */}
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img src={JazzOne} className="d-block w-100" alt="jazz pic" />
-                    <div className="carousel-caption d-none d-md-block text-dark mb-auto">
-                        <h2>First slide label</h2>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
+                <div className="carousel-item active pb-0">
+                    <img src={JazzTwo} className="d-block w-100 pb-0" alt="Welcome to bones." />
                 </div>
+
                 {/* Second Slide */}
                 <div className="carousel-item mx-auto">
-                    <img src={JazzTwo} className="d-block w-100" alt="jazz pic" />
-                    <div className="carousel-caption d-none d-md-block text-dark" >
-                        <h2>Second slide label</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+                    <img src={JazzOne} className="d-block w-100" alt="the source" />
                 </div>
+
                 {/* Third Slide */}
                 <div className="carousel-item">
-                    <img src={JazzThree} className="d-block w-100" alt="jazz pic" />
-                    <div className="carousel-caption d-none d-md-block text-dark" >
-                        <h2>Third slide label</h2>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </div>
+                    <img src={JazzThree} className="d-block w-100" alt="for new york city" />
                 </div>
+
                 {/* Four Slide */}
                 <div className="carousel-item mx-auto">
-                    <img src={JazzFour} className="d-block w-100" alt="jazz pic" />
-                    <div className="carousel-caption d-none d-md-block text-dark" >
-                        <h2>Second slide label</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+                    <img src={JazzFour} className="d-block w-100" alt="jazz" />
                 </div>
+
             </div>
             <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>

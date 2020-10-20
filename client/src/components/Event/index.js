@@ -30,7 +30,7 @@ function Event(props) {
         "Nov",
         "Dec"
     ]
-    
+
     let eventDate = new Date(props.date);
 
     return (
@@ -58,7 +58,7 @@ function Event(props) {
                                 <button className="btn btn-light my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
                             ) : (<div></div>)}
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-2">
                         {props.sets.map((set, index) => (
                             <div key={index}>
                                 <p className="my-0 pt-0" style={{
@@ -66,9 +66,9 @@ function Event(props) {
                                 }}>{set.startTime}: {set.artistList}</p>
                             </div>
                         ))}
-                        <p className="text-muted pt-0" style={{
+                        <p className="text-muted pt-3" style={{
                             fontFamily: "'Raleway', sans-serif"
-                        }}>Cover: ${props.cover}</p>
+                        }}>${props.cover}</p>
                     </div>
                 </div>
             </div>

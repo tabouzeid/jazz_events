@@ -5,6 +5,7 @@ import FadeIn from 'react-fade-in';
 import Logo from "../../assets/bones_higer_res.png";
 import BrickWall from "../../assets/brick_wall_copy.jpg";
 import UserContext from "../../utils/UserContext";
+
 const bgStyle = {
     backgroundImage: `url(${BrickWall})`,
     boxShadow: "3px 3px 8px rgb(50, 50, 50, 0.4)",
