@@ -60,7 +60,7 @@ module.exports = {
   findById: function (req, res) {
     User
       .findById(req.user._id)
-      .then(dbModel => res.json({ "email": dbModel.email, "name": dbModel.name }))
+      .then(dbModel => res.json({ "email": dbModel.email, "name": dbModel.name, "profileImg": dbModel.profileImg }))
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
@@ -77,17 +77,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: async function (req, res) {
-    const DIR = './client/public/';
-    const storage = multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, DIR);
-      },
-      filename: (req, file, cb) => {
-        const fileName = file.originalname.toLowerCase().split(' ').join('-');
-        cb(null, uuidv4() + '-' + fileName)
-      }
-    });
-    const url = req.protocol + '://' + req.get('host');
+
     let updatedFields = {};
     if (req.body.name) {
       updatedFields.name = req.body.name;
@@ -98,18 +88,38 @@ module.exports = {
     if (req.body.password) {
       updatedFields.password = await bcrypt.hash(req.body.password, 10);
     }
-    if (req.body.profileImg) {
-      // console.log(url + '/client/public/' + req.file.filename);
-      console.log(req.body.profileImg);
-      updatedFields.profileImg = url + '/client/public/' + req.body.profileImg;
-    }
+    // if (req.body.profileImg) {
+    //   console.log(req.file.filename);
+    //   updatedFields.profileImg = '/' + req.file.filename;
+    // }
     console.log("going to update ", req.user._id, "for fileds ", updatedFields)
     User
       .findOneAndUpdate({ _id: req.user._id }, updatedFields)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json({ msg: "could not update profile info" }));
   },
-
+  updatePicture: function (req, res) {
+    const DIR = '../client/public/';
+    const storage = multer.diskStorage({
+      destination: (req, file, cb) => {
+        cb(null, DIR);
+      },
+      filename: (req, file, cb) => {
+        const fileName = file.File.name.toLowerCase().split(' ').join('-');
+        cb(null, uuidv4() + '-' + fileName)
+      }
+    });
+    User
+      .findOneAndUpdate({ _id: req.user._id }, { $set: { 'profileImg': "/" + req.file.filename } })
+      .then(data => {
+        console.log(req.file.filename);
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err);
+      });
+  },
 
 
   getFavorites: function (req, res) {

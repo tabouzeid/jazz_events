@@ -22,13 +22,13 @@ const UserSchema = new Schema({
   },
   favorites: {
     type: Array,
-    require: false,
+    required: false,
     default: []
   },
   profileImg: {
     type: String,
-    require: false,
-    default: ""
+    required: false,
+    default: "none"
   }
 });
 const User = mongoose.model("User", UserSchema);

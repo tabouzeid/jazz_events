@@ -78,7 +78,11 @@ module.exports = function (app) {
         }
     });
 
-    app.put('/api/user/', AccessMiddleware.hasAccess, upload.single('profileImg'), async (req, res) => {
+    app.put('/api/userPicture/', AccessMiddleware.hasAccess, upload.single('profileImg'), async (req, res) => {
+        userController.updatePicture(req, res);
+    });
+
+    app.put('/api/user/', AccessMiddleware.hasAccess, async (req, res) => {
         if (req.body.currentPassword) {
             const passwordMatch = await bcrypt.compare(req.body.currentPassword, req.user.password)
             if (!passwordMatch) {
@@ -86,6 +90,6 @@ module.exports = function (app) {
             }
         }
         userController.update(req, res);
-    })
+    });
     
 };

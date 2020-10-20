@@ -20,18 +20,29 @@ export default class FilesUploadComponent extends Component {
 
     onSubmit(e) {
         e.preventDefault()
-        // const formData = new FormData()
-        // formData.append('profileImg', this.state.profileImg)
-        console.log(this.state.profileImg.name);
-        axios.put("/api/user", {
-            profileImg: this.state.profileImg.name
-        }).then(res => {
+        const formData = new FormData()
+        formData.append('profileImg', this.state.profileImg)
+        
+        axios.put("/api/userPicture/", formData)
+        .then(res => {
             console.log(res)
         })
+        // axios.put("http://localhost:3000/api/user", formData, {
+        //     profileImg: this.state.profileImg.name
+        // }).then(res => {
+        //     console.log(res)
+        // })
+        // console.log(this.state.profileImg.name);
+        // axios.put("/api/user", {
+        //     profileImg: this.state.profileImg.name
+        // }).then(res => {
+        //     console.log(res)
+        // })
     }
 
-
+    
     render() {
+        console.log(this.state);
         return (
             <div className="container">
                 <div className="row">

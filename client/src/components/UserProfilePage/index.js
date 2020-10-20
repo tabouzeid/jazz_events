@@ -37,12 +37,13 @@ export default function UserProfilePage() {
     useEffect(() => {
         axios.get("/api/user").then((res) => { setUser(res.data) })
     }, []);
-
+    console.log(user);
     return (
         <div className="container">
             <div className="row">
                 <div className="col">
                 <FilesUploadComponent />
+                <img src={user.profileImg} alt="image"/>
                     <form onSubmit={updateSettings}>
                     {/* <FilesUploadComponent /> */}
                         <h1>User Settings</h1>
@@ -55,7 +56,7 @@ export default function UserProfilePage() {
                                 id="email"
                                 name="email"
                                 onChange={changeField}
-                                placeholder={user.email}
+                                placeholder={user.role}
                             />
                         </div>
                         <div className="form-group">

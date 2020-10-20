@@ -34,7 +34,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dbConfig = process.env.MONGODB_URI || "mongodb://localhost/eventkeeper";
 mongoose.connect(dbConfig, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-
+app.use(express.static("/client/public"));
 // MongoDB Configuration
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig, {
