@@ -1,61 +1,7 @@
 const User = require("../model/User");
 const bcrypt = require("bcryptjs");
-
-// ================multer====================
-
 const multer = require('multer');
-// const uuidv4 = require('uuid/v4');
-// // router = express.Router();
 
-// const DIR = './client/public/';
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, DIR);
-//     },
-//     filename: (req, file, cb) => {
-//         const fileName = file.originalname.toLowerCase().split(' ').join('-');
-//         cb(null, uuidv4() + '-' + fileName)
-//     }
-// });
-
-// var upload = multer({
-//     storage: storage,
-//     fileFilter: (req, file, cb) => {
-//         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-//             cb(null, true);
-//         } else {
-//             cb(null, false);
-//             return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-//         }
-//     }
-// });
-// // User model
-// let User = require('../models/User');
-
-// router.post('/user', upload.single('profileImg'), (req, res, next) => {
-//     const url = req.protocol + '://' + req.get('host')
-//     const user = new User({
-//         // _id: new mongoose.Types.ObjectId(),
-//         name: req.body.name,
-//         profileImg: url + '/public/' + req.file.filename
-//     });
-//     user.save().then(result => {
-//         res.status(201).json({
-//             message: "User registered successfully!",
-//             userCreated: {
-//                 _id: result._id,
-//                 profileImg: result.profileImg
-//             }
-//         })
-//     }).catch(err => {
-//         console.log(err),
-//             res.status(500).json({
-//                 error: err
-//             });
-//     })
-// })
-
-// ==================end of multer=================
 module.exports = {
   findById: function (req, res) {
     User
@@ -88,10 +34,6 @@ module.exports = {
     if (req.body.password) {
       updatedFields.password = await bcrypt.hash(req.body.password, 10);
     }
-    // if (req.body.profileImg) {
-    //   console.log(req.file.filename);
-    //   updatedFields.profileImg = '/' + req.file.filename;
-    // }
     console.log("going to update ", req.user._id, "for fileds ", updatedFields)
     User
       .findOneAndUpdate({ _id: req.user._id }, updatedFields)
@@ -121,7 +63,6 @@ module.exports = {
       });
   },
 
-
   getFavorites: function (req, res) {
     User
       .findById(req.user._id)
@@ -131,6 +72,7 @@ module.exports = {
         res.status(422).json(err);
       });
   },
+
   updateFavorites: function (req, res) {
     User
       .findOneAndUpdate({ _id: req.user._id }, { $set: { 'favorites': req.body } })
@@ -142,6 +84,7 @@ module.exports = {
         res.status(422).json(err);
       });
   },
+  
   signup: function (req, res) {
     // console.log("hello", req);
     User

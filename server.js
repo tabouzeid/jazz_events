@@ -20,14 +20,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-// =============================================================
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/eventkeeper", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-
 // Define API routes here
 require("./routes/api-routes")(app);
 require("./routes/api-routes-login")(app);
-
-
 
 // ============ multer ============
 const cors = require('cors');

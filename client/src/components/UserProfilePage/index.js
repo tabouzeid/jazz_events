@@ -45,7 +45,6 @@ export default function UserProfilePage() {
                 <FilesUploadComponent />
                 <img src={user.profileImg} alt="image" height="200"/>
                     <form onSubmit={updateSettings}>
-                    {/* <FilesUploadComponent /> */}
                         <h1>User Settings</h1>
                         <div className="form-group">
                             <h3 className="heading">Change Email</h3>

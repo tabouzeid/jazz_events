@@ -28,20 +28,8 @@ export default class FilesUploadComponent extends Component {
             console.log(res);
             window.location.reload(false);
         })
-        // axios.put("http://localhost:3000/api/user", formData, {
-        //     profileImg: this.state.profileImg.name
-        // }).then(res => {
-        //     console.log(res)
-        // })
-        // console.log(this.state.profileImg.name);
-        // axios.put("/api/user", {
-        //     profileImg: this.state.profileImg.name
-        // }).then(res => {
-        //     console.log(res)
-        // })
     }
 
-    
     render() {
         console.log(this.state);
         return (
