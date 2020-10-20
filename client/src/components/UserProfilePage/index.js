@@ -43,7 +43,7 @@ export default function UserProfilePage() {
             <div className="row">
                 <div className="col">
                 <FilesUploadComponent />
-                <img src={user.profileImg} alt="image"/>
+                <img src={user.profileImg} alt="image" height="200"/>
                     <form onSubmit={updateSettings}>
                     {/* <FilesUploadComponent /> */}
                         <h1>User Settings</h1>
@@ -56,7 +56,7 @@ export default function UserProfilePage() {
                                 id="email"
                                 name="email"
                                 onChange={changeField}
-                                placeholder={user.role}
+                                placeholder={user.email}
                             />
                         </div>
                         <div className="form-group">

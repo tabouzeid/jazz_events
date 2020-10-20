@@ -25,7 +25,8 @@ export default class FilesUploadComponent extends Component {
         
         axios.put("/api/userPicture/", formData)
         .then(res => {
-            console.log(res)
+            console.log(res);
+            window.location.reload(false);
         })
         // axios.put("http://localhost:3000/api/user", formData, {
         //     profileImg: this.state.profileImg.name
