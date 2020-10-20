@@ -28,7 +28,7 @@ const UserSchema = new Schema({
   profileImg: {
     type: String,
     required: false,
-    default: "none"
+    default: "https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
   }
 });
 const User = mongoose.model("User", UserSchema);

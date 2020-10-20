@@ -22,12 +22,12 @@ export default class FilesUploadComponent extends Component {
         e.preventDefault()
         const formData = new FormData()
         formData.append('profileImg', this.state.profileImg)
-        
+
         axios.put("/api/userPicture/", formData)
-        .then(res => {
-            console.log(res);
-            window.location.reload(false);
-        })
+            .then(res => {
+                console.log(res);
+                window.location.reload(false);
+            })
     }
 
     render() {
@@ -36,6 +36,7 @@ export default class FilesUploadComponent extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col">
+                        <img src={this.props.user.profileImg} className="rounded-circle z-depth-0 mx-auto d-block" alt="image" height="200" />
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <input type="file" onChange={this.onFileChange} />

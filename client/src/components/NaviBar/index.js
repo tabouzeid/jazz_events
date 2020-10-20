@@ -48,7 +48,7 @@ export default function NaviBar(props) {
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-user"></i> <img src={picture} className="rounded-circle z-depth-0" alt="avatar" height="35" />
+                                    <i className="fas fa-user"></i> <img src={picture} className="rounded-circle z-depth-0" alt="avatar" height="25" />
                                 </a>
 
                                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
@@ -72,7 +72,7 @@ export default function NaviBar(props) {
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-user"></i> <img src={picture} className="rounded-circle z-depth-0" alt="avatar" height="35" />
+                                    <i className="fas fa-user"></i> <img src={picture} className="rounded-circle z-depth-0" alt="avatar" height="25" />
                                 </a>
 
                                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">

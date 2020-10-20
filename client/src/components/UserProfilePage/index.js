@@ -41,9 +41,9 @@ export default function UserProfilePage() {
     return (
         <div className="container">
             <div className="row">
-                <div className="col">
-                <FilesUploadComponent />
-                <img src={user.profileImg} alt="image" height="200"/>
+                <div className="col ">
+                <FilesUploadComponent user={user} />
+                {/* <img src={user.profileImg} className="rounded-circle z-depth-0 mx-auto d-block" alt="image" height="200"/> */}
                     <form onSubmit={updateSettings}>
                         <h1>User Settings</h1>
                         <div className="form-group">
