@@ -45,7 +45,7 @@ export default function EventsPage() {
             <div className="input-group my-5 d-flex justify-content-center align-items-center">
                 <h5 className="mr-3 my-auto">Search Events by Date:</h5>
                 <input type="date" style={{ fontFamily: "'Raleway', sans-serif" }} className="form-control col-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="searchInput" />
-                <button type="button" style={{ backgroundColor: "#1f60a8" }} className="btn my-auto ml-3 btn-sm text-white" onClick={handleOnInputChange}>Search</button>
+                <button type="button" style={{ backgroundColor: "#0060a4" }} className="btn my-auto ml-3 btn-sm text-white" onClick={handleOnInputChange}>Search</button>
             </div>
             {events.map((event, index) =>
                 <Event

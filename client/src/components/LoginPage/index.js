@@ -56,8 +56,8 @@ export default function LoginPage() {
     }
 
     return (
-        <div >
-            <div className="container mb-5">
+        <div style={{ height: "71vh" }}>
+            <div className="container">
                 <form onSubmit={handleSubmit} className="mx-auto col-8">
                     <div className="form-group ">
                         <label><h3>Email:</h3></label>
@@ -81,13 +81,13 @@ export default function LoginPage() {
                             onChange={event => setPassword(event.target.value)}
                         />
                     </div>
-                    <button type="submit" className="btn text-white" style={{ backgroundColor: "#1f60a8" }}>Submit</button>
+                    <button type="submit" className="btn text-white" style={{ backgroundColor: "#0060a4" }}>Submit</button>
                 </form>
             </div>
 
 
-            <div className="col text-center mx-auto pb-5 mb-5">
-                <p style={{ marginBottom: "40px" }}><a href="/signup">Sign Up</a> for a new account!</p>
+            <div className="col text-center mx-auto">
+                <p style={{ marginBottom: "50px" }}><a href="/signup">Sign Up</a> for a new account!</p>
             </div>
         </div>
     )

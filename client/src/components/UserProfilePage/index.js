@@ -37,13 +37,12 @@ export default function UserProfilePage() {
     }, []);
     console.log(user);
     return (
-        <div className="container">
-            <div className="col-7 mx-auto">
+        <div className="container mt-0 pt-0">
+            <div className="col-9 mx-auto">
                 <FilesUploadComponent user={user} />
-                <form className="mb-5" onSubmit={updateSettings}>
-                    <h1 className="text-center">User Settings</h1>
+                <form className="mb-5 mt-1 pt-0" onSubmit={updateSettings}>
                     <div className="form-group">
-                        <h3 className="mb-0 mt-5">Change Email</h3>
+                        <h3 className="mb-0 mt-3">Change Email</h3>
                         <label>New email:</label>
                         <input
                             type="email"
@@ -122,7 +121,7 @@ export default function UserProfilePage() {
                         </div>
                     </div>
                     <div className="row pt-3">
-                        <button type="submit" className="btn text-white mx-auto" style={{ backgroundColor: "#1f60a8" }}>Submit</button>
+                        <button type="submit" className="btn text-white mx-auto" style={{ backgroundColor: "#0060a4" }}>Submit</button>
                     </div>
                 </form>
             </div>

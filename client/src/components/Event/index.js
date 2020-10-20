@@ -32,7 +32,7 @@ function Event(props) {
     ]
 
     let eventDate = new Date(props.date);
-    let googleMapsQuery = "https://www.google.com/maps/search/?api=1&query="+props.address;
+    let googleMapsQuery = "https://www.google.com/maps/search/?api=1&query=" + props.address;
 
     return (
         <div className="col-8 d-flex mx-auto my-4">
@@ -69,7 +69,7 @@ function Event(props) {
                         ))}
                         <p className="text-muted pt-3" style={{
                             fontFamily: "'Raleway', sans-serif"
-                        }}>${props.cover}</p>
+                        }}>{props.cover === 0 || "" ? "Free" : "$" + props.cover}</p>
                     </div>
                 </div>
             </div>

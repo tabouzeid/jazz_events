@@ -16,7 +16,7 @@ export default function SignInPage() {
     }
 
     const validateEmail = (email) => {
-        
+
         const re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
         return re.test(email);
     }
@@ -49,7 +49,7 @@ export default function SignInPage() {
     }
 
     return (
-        <div className="container mx-auto col-6 pb-2 mb-2">
+        <div className="container mx-auto col-6" style={{ height: "71vh" }}>
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -86,7 +86,7 @@ export default function SignInPage() {
                         onChange={event => setPassword(event.target.value)}
                     />
                 </div>
-                <button type="submit" style={{ backgroundColor: "#1f60a8" }} className="btn btn-primary mb-2 text-white">Submit</button>
+                <button type="submit" style={{ backgroundColor: "#0060a4" }} className="btn btn-primary mb-2 text-white">Submit</button>
             </form>
         </div>
     )

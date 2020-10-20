@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const style = {
+    height: "200px",
+    maxWidth: "200px",
+    borderRadius: "100px"
+}
 export default class FilesUploadComponent extends Component {
 
     constructor(props) {
@@ -20,26 +25,26 @@ export default class FilesUploadComponent extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <form className="md-form">
-                            <div className="file-field">
-                                <div className="mb-4">
-                                    <img src={this.props.user.profileImg}
-                                        className="rounded-circle z-depth-0 mx-auto d-block" alt="avatar" />
-                                </div>
-                                <div className="d-flex justify-content-center">
-                                    <div className="btn btn-mdb-color btn-rounded float-left">
-                                        <label for="files" className="btn btn-info">Select Image</label>
-                                        <input id="files" style={{ visibility: "hidden" }} type="file" onChange={this.onFileChange} />
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+            <div className="container mt-5">
+                <h1 className="text-center">User Settings</h1>
+                <form className="my-0 pt-3 pb-0 ">
+
+
+                    <div className="d-flex justify-content-center mb-4 mt-2">
+                        <img src={this.props.user.profileImg}
+                            className="mx-auto d-block" style={style} alt="avatar" />
                     </div>
-                </div>
+
+
+                    <div className="d-flex flex-column mx-auto w-50">
+                        <label for="files" className="btn text-white col-6 mx-auto" style={{ backgroundColor: "#0060a4" }}>Select Image</label>
+                        <input id="files" style={{ visibility: "hidden" }} type="file" onChange={this.onFileChange} className="px-0 mx-0" />
+                    </div>
+
+
+                </form>
             </div>
+
         )
     }
 }

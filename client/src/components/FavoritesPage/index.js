@@ -30,7 +30,7 @@ export default function FavoritesPage() {
     }
 
     return (
-        <div className="mt-5">
+        <div className="mt-5" style={{ height: "76vh" }}>
 
             <h2 className="text-center">Saved Events</h2>
             <div className="mx-auto col-10 mt-5">
