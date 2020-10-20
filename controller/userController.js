@@ -53,11 +53,9 @@ module.exports = {
     User
       .findOneAndUpdate({ _id: req.user._id }, { $set: { 'profileImg': "/" + req.file.filename } })
       .then(data => {
-        console.log(req.file.filename);
-        console.log(data);
+        res.end();
       })
       .catch(err => {
-        console.log(err);
         res.status(422).json(err);
       });
   },
