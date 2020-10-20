@@ -1,6 +1,6 @@
 # Jazz Events
 
-This project is meant to serve as a site for jazz fans to find the non-mainstream jazz events. Users are able to filter events by date and by artist, they are also able to create their own accounts and bookmark these events.
+This project is meant to serve as a consolidated event board where fans of jazz and other non-commercial musics can find information on performances taking place in New York City. Users are able to filter events by date and by artist, they are also able to create their own accounts and bookmark these events.
 
 ![AppScreenshot](./client/src/assets/app_screenshot.png)
 
