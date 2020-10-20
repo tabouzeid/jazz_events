@@ -5,44 +5,36 @@ export default class FilesUploadComponent extends Component {
 
     constructor(props) {
         super(props);
-
         this.onFileChange = this.onFileChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        this.state = {
-            profileImg: ''
-        }
     }
 
     onFileChange(e) {
-        this.setState({ profileImg: e.target.files[0] })
-    }
-
-    onSubmit(e) {
-        e.preventDefault()
         const formData = new FormData()
-        formData.append('profileImg', this.state.profileImg)
+        formData.append('profileImg', e.target.files[0])
 
         axios.put("/api/userPicture/", formData)
             .then(res => {
-                console.log(res);
                 window.location.reload(false);
             })
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <img src={this.props.user.profileImg} className="rounded-circle z-depth-0 mx-auto d-block" alt="image" height="200" />
-                        <form onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                                <input type="file" onChange={this.onFileChange} />
-                            </div>
-                            <div className="form-group">
-                                <button className="btn btn-primary" type="submit">Upload</button>
+                        <form className="md-form">
+                            <div className="file-field">
+                                <div className="mb-4">
+                                    <img src={this.props.user.profileImg}
+                                        className="rounded-circle z-depth-0 mx-auto d-block" alt="avatar" />
+                                </div>
+                                <div className="d-flex justify-content-center">
+                                    <div className="btn btn-mdb-color btn-rounded float-left">
+                                        <label for="files" className="btn btn-info">Select Image</label>
+                                        <input id="files" style={{ visibility: "hidden" }} type="file" onChange={this.onFileChange} />
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
