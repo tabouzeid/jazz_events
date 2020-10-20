@@ -23,7 +23,6 @@ function App() {
         setAdmin(res.data.success)
       })
       .catch((err) => {
-        console.log("error ", err)
         setAdmin(false);
       });
     axios.get('/authenticated-only')
@@ -31,7 +30,6 @@ function App() {
         setUser(res.data.success)
       })
       .catch((err) => {
-        console.log("error ", err);
         setUser(false);
       });
     axios.get("/api/user").then((res) => { setPicture(res.data.profileImg) })
@@ -63,7 +61,6 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-
     </UserContext.Provider>
   );
 }

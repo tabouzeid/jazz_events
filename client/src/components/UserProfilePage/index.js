@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "./styles.css";
 import axios from 'axios';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import FilesUploadComponent from '../Files-upload-component';
@@ -18,7 +17,6 @@ export default function UserProfilePage() {
                 currentPassword: user.currentPassword,
                 password: user.password
             }
-            console.log(details);
             axios.put("/api/user", details)
                 .then((response) => {
                     alert("Your profile has been udpated");
@@ -40,75 +38,96 @@ export default function UserProfilePage() {
     console.log(user);
     return (
         <div className="container">
-            <div className="row">
-                <div className="col ">
+            <div className="col-7 mx-auto">
                 <FilesUploadComponent user={user} />
-                {/* <img src={user.profileImg} className="rounded-circle z-depth-0 mx-auto d-block" alt="image" height="200"/> */}
-                    <form onSubmit={updateSettings}>
-                        <h1>User Settings</h1>
-                        <div className="form-group">
-                            <h3 className="heading">Change Email</h3>
-                            <label>New email:</label>
-                            <input
-                                type="email"
-                                className="form-control"
-                                id="email"
-                                name="email"
-                                onChange={changeField}
-                                placeholder={user.email}
-                            />
+                <form className="mb-5" onSubmit={updateSettings}>
+                    <h1 className="text-center">User Settings</h1>
+                    <div className="form-group">
+                        <h3 className="mb-0 mt-5">Change Email</h3>
+                        <label>New email:</label>
+                        <input
+                            type="email"
+                            style={{
+                                fontFamily: "'Raleway', sans-serif"
+                            }}
+                            className="form-control"
+                            id="email"
+                            name="email"
+                            onChange={changeField}
+                            placeholder={user.email}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <h3 className="mb-0 mt-5">Change Name</h3>
+                        <label>New username:</label>
+                        <input
+                            type="text"
+                            style={{
+                                fontFamily: "'Raleway', sans-serif"
+                            }}
+                            className="form-control"
+                            id="name"
+                            name="name"
+                            onChange={changeField}
+                            placeholder={user.name}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <h3 className="mb-0 mt-5">Change Password</h3>
+                        <label>Current password:</label>
+                        <input
+                            type="password"
+                            style={{
+                                fontFamily: "'Raleway', sans-serif"
+                            }}
+                            className="form-control"
+                            id="currentPassword"
+                            name="currentPassword"
+                            onChange={changeField}
+                            placeholder="Enter current password"
+                            minLength="8"
+                        />
+                        <span id="currentPasswordTest" ></span>
+                        <div className="row">
+                            <div className="col">
+                                <label>New password:</label>
+                                <input
+                                    type="password"
+                                    style={{
+                                        fontFamily: "'Raleway', sans-serif"
+                                    }}
+                                    className="form-control"
+                                    id="newPassword"
+                                    name="password"
+                                    onChange={changeField}
+                                    placeholder="New password"
+                                    minLength="8"
+                                />
+                            </div>
+                            <div className="col">
+                                <label >Confirm new password:</label>
+                                <input
+                                    type="password"
+                                    style={{
+                                        fontFamily: "'Raleway', sans-serif"
+                                    }}
+                                    className="form-control"
+                                    id="reenterNewPassword"
+                                    name="reenterNewPassword"
+                                    onChange={changeField}
+                                    placeholder="New password"
+                                    minLength="8"
+                                />
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <h3 className="heading">Change Name</h3>
-                            <label>New username:</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="name"
-                                name="name"
-                                onChange={changeField}
-                                placeholder={user.name}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <h3 className="heading">Change Password</h3>
-                            <label>Current password:</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="currentPassword"
-                                name="currentPassword"
-                                onChange={changeField}
-                                placeholder="Enter current password"
-                                minLength="8"
-                            />
-                            <span id="currentPasswordTest" ></span>
-                            <label>New password:</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="newPassword"
-                                name="password"
-                                onChange={changeField}
-                                placeholder="Enter new password"
-                                minLength="8"
-                            />
-                            <label>Reenter new password:</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="reenterNewPassword"
-                                name="reenterNewPassword"
-                                onChange={changeField}
-                                placeholder="Reenter new password"
-                                minLength="8"
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                    </div>
+                    <div className="row pt-3">
+                        <button type="submit" className="btn text-white mx-auto" style={{ backgroundColor: "#1f60a8" }}>Submit</button>
+                    </div>
+                </form>
             </div>
-        </div>
+
+        </div >
     );
 
 }
