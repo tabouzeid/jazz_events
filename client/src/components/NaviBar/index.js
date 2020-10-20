@@ -23,7 +23,7 @@ const logoStyle = {
     left: `45px`
 }
 export default function NaviBar(props) {
-    const { admin, user } = useContext(UserContext);
+    const { admin, user, picture } = useContext(UserContext);
     const history = useHistory();
 
     const handleLogout = (event) => {
@@ -48,7 +48,7 @@ export default function NaviBar(props) {
                         (
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-user"></i> <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" className="rounded-circle z-depth-0" alt="avatar" height="35" />
+                                    <i className="fas fa-user"></i> <img src={picture} className="rounded-circle z-depth-0" alt="avatar" height="25" />
                                 </a>
 
                                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4" style={{ zIndex: "0" }}>
@@ -62,7 +62,7 @@ export default function NaviBar(props) {
                         user ? (
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-user"></i> <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" className="rounded-circle z-depth-0" alt="avatar" height="35" />
+                                    <i className="fas fa-user"></i> <img src={picture} className="rounded-circle z-depth-0" alt="avatar" height="25" />
                                 </a>
 
                                 <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">

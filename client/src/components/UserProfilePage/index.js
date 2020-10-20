@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import FilesUploadComponent from '../Files-upload-component';
 
 export default function UserProfilePage() {
     const [user, setUser] = useState({});
@@ -33,10 +35,11 @@ export default function UserProfilePage() {
     useEffect(() => {
         axios.get("/api/user").then((res) => { setUser(res.data) })
     }, []);
-
+    console.log(user);
     return (
         <div className="container">
             <div className="col-7 mx-auto">
+                <FilesUploadComponent user={user} />
                 <form className="mb-5" onSubmit={updateSettings}>
                     <h1 className="text-center">User Settings</h1>
                     <div className="form-group">

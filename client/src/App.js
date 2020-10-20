@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 function App() {
   const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(false);
+  const [picture, setPicture] = useState("");
 
   useEffect(() => {
     axios.get('/admin-only')
@@ -31,10 +32,11 @@ function App() {
       .catch((err) => {
         setUser(false);
       });
+    axios.get("/api/user").then((res) => { setPicture(res.data.profileImg) })
   }, []);
 
   return (
-    <UserContext.Provider value={{ admin, user }}>
+    <UserContext.Provider value={{ admin, user, picture }}>
       <Router>
         <NaviBar />
         <Switch>
