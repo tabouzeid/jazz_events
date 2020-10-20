@@ -32,6 +32,7 @@ function Event(props) {
     ]
     
     let eventDate = new Date(props.date);
+    let googleMapsQuery = "https://www.google.com/maps/search/?api=1&query="+props.address;
 
     return (
         <div className="col-8 d-flex mx-auto my-4">
@@ -50,7 +51,7 @@ function Event(props) {
                 </div>
                 <div>
                     <div className="d-flex justify-content-between mt-2">
-                        <h6>{props.address}</h6>
+                        <h6><a href={googleMapsQuery} target="_blank" rel="noopener noreferrer">{props.address}</a></h6>
                         {admin ?
                             (
                                 <button className="btn btn-light my-auto ml-3 btn-sm saveUnsave" type="button" onClick={props.buttonBehavior} index={props.index}>{props.buttonText}</button>
